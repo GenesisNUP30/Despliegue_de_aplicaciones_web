@@ -7,8 +7,9 @@ A lo largo del curso trabajaremos con **servidores**, **entornos de despliegue**
 
 ## 📊 Gráfico representativo
 
-![Diagrama de despliegue](https://upload.wikimedia.org/wikipedia/commons/d/d4/Client-server-model.svg)  
-*Diagrama básico Cliente–Servidor (Fuente: Wikimedia Commons)*
+![Diagrama Cliente-Servidor](./recursos/diagrama_cliente_servidor.png)  
+*Diagrama básico Cliente–Servidor (almacenado localmente en el repositorio)*
+
 
 
 ## Tema 0 - Introducción
