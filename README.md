@@ -1,8 +1,15 @@
-# Despliegue de aplicaciones web
+# 🌐 Despliegue de Aplicaciones Web
 
-Este repositorio incluye actividades llevadas a cabo en el módulo *Despliegue de aplicaciones web*.
+Este repositorio incluye las actividades y ejercicios realizados en el módulo *Despliegue de Aplicaciones Web*.  
+A lo largo del curso trabajaremos con **servidores**, **entornos de despliegue**, y buenas prácticas para la publicación de aplicaciones en producción.  
 
 ---
+
+# 📊 Gráfico representativo
+
+![Diagrama de despliegue](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Client-server-model.svg/500px-Client-server-model.svg.png)  
+*Diagrama básico Cliente–Servidor (Fuente: Wikimedia Commons)*
+
 
 ## Tema 0 - Introducción
 
