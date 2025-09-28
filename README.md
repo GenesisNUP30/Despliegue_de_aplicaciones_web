@@ -1,7 +1,6 @@
 # 🌐 Despliegue de Aplicaciones Web
 
-Este repositorio incluye las actividades y ejercicios realizados en el módulo *Despliegue de Aplicaciones Web*.  
-A lo largo del curso trabajaremos con **servidores**, **entornos de despliegue**, y buenas prácticas para la publicación de aplicaciones en producción.  
+Este repositorio incluye actividades llevadas a cabo en el módulo Despliegue de Aplicaciones Web
 
 ---
 
