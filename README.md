@@ -5,9 +5,9 @@ A lo largo del curso trabajaremos con **servidores**, **entornos de despliegue**
 
 ---
 
-# 📊 Gráfico representativo
+## 📊 Gráfico representativo
 
-![Diagrama de despliegue](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Client-server-model.svg/500px-Client-server-model.svg.png)  
+![Diagrama de despliegue](https://upload.wikimedia.org/wikipedia/commons/d/d4/Client-server-model.svg)  
 *Diagrama básico Cliente–Servidor (Fuente: Wikimedia Commons)*
 
 
