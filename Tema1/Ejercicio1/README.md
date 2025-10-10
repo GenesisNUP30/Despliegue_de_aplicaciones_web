@@ -21,6 +21,12 @@ Algo importante a tener en cuenta es que para hacer toda la instalación necesit
     sudo apt install apache2
    ```
    Introducimos la contraseña de usuario y confirmamos la instalación escribiendo s (de sí).
+
+3. Probamos el funcionamiento
+   Para ver si nuestro servidor web está correctamente instalado, abrimos el navegador y en la barra de búsqueda escribimos **http://nuestra_ip**, es decir, **http://127.0.0.1** o lo
+   que es lo mismo **localhost**.
+   Se mostrará la página web predeterminada de Apache para Ubuntu 24 tal como se ve en la foto: 
+
    
 
    
