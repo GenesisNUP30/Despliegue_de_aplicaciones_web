@@ -31,7 +31,7 @@ Algo importante a tener en cuenta es que para hacer toda la instalación necesit
 5. Probamos el funcionamiento
    Para ver si nuestro servidor web está correctamente instalado, abrimos el navegador y en la barra de búsqueda escribimos **http://nuestra_ip**, es decir, **http://127.0.0.1** o lo
    que es lo mismo **localhost**.
-   Se mostrará la página web predeterminada de Apache para Ubuntu 24 tal como se ve en la foto:
+   Se mostrará la página web predeterminada de Apache tal como se ve en la foto:
 
 
    ![Paso3](/recursos/tema1/ejercicio1/apache3.png)
@@ -63,25 +63,26 @@ Como ya hemos actualizado los paquetes para instalar Apache directamente introdu
      exit
    ```
 
-   
-   
+### PHP
+Es el componente que procesa el código para mostrar contenido dinámico al usuario final. Es necesario instalar **php-mysql**, un módulo de PHP que permite comunicarnos con bases de datos basadas en MySQL. Y también necesitaremos **libapache2-mod-php** para que Apache pueda gestionar archivos PHP. 
 
+1. Instalación
+   ```bash
+     sudo apt install php libapache2-mod-php php-mysql
+   ```
 
-   
-
-
-
-
-
-
-
-
-
+   ![Paso1](/recursos/tema1/ejercicio1/php1.png)
    
 
+2. Comprobación
+   Una vez instalado, para verficar la versión de PHP hacemos:
+   ```bash
+       php -v
+   ```
+
+   ![Paso1](/recursos/tema1/ejercicio1/php2.png)
    
 
-   
-   
+
 
 
