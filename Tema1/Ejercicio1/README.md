@@ -15,7 +15,7 @@ Algo importante a tener en cuenta es que para hacer toda la instalación necesit
     sudo apt update
    ```
     Si es la primera vez que usamos sudo nos pedirá la contraseña de usuario para poder obtener los privilegios adecuados para administrar los paquetes del sistema.
-   ![Paso1](.recursos/apache1.png)
+   ![Paso1](/recursos/apache1.png)
 
 3. Instalamos Apache
     ```bash
