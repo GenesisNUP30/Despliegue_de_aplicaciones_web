@@ -16,7 +16,7 @@ Algo importante a tener en cuenta es que para hacer toda la instalación necesit
    ```
     Si es la primera vez que usamos sudo nos pedirá la contraseña de usuario para poder obtener los privilegios adecuados para administrar los paquetes del sistema.
 
-   ![Paso1](/recursos/apache1.png)
+   ![Paso1](/recursos/tema1/ejercicio1/apache1.png)
 
 
 3. Instalamos Apache
@@ -25,7 +25,7 @@ Algo importante a tener en cuenta es que para hacer toda la instalación necesit
    ```
    Introducimos la contraseña de usuario y confirmamos la instalación escribiendo s (de sí).
 
-   ![Paso2](/recursos/apache2.png)
+   ![Paso2](/recursos/tema1/ejercicio1/apache2.png)
    
 
 5. Probamos el funcionamiento
@@ -34,7 +34,7 @@ Algo importante a tener en cuenta es que para hacer toda la instalación necesit
    Se mostrará la página web predeterminada de Apache para Ubuntu 24 tal como se ve en la foto:
 
 
-   ![Paso3](/recursos/apache3.png)
+   ![Paso3](/recursos/tema1/ejercicio1/apache3.png)
    
    
 ### MySQL
@@ -46,7 +46,7 @@ Como ya hemos actualizado los paquetes para instalar Apache directamente introdu
     sudo apt install mysql-server
     ```
    
-   ![Paso1](/recursos/mysql1.png)
+   ![Paso1](/recursos/tema1/ejercicio1/mysql1.png)
 
 2. Comprobar el funcionamiento
    Iniciamos sesión en la terminal para verificar si podemos entrar:
@@ -54,10 +54,17 @@ Como ya hemos actualizado los paquetes para instalar Apache directamente introdu
      sudo mysql
    ```
    
-   ![Paso2](/recursos/mysql2.png)
+   ![Paso2](/recursos/tema1/ejercicio1/mysql2.png)
    
 
    Como podemos comprobar, todo está correcto
+   Para salir de la consola de MySQL hacemos:
+   ```bash
+     exit
+   ```
+
+   
+   
 
 
    
