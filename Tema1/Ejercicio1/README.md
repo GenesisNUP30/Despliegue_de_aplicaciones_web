@@ -33,7 +33,44 @@ Algo importante a tener en cuenta es que para hacer toda la instalación necesit
    que es lo mismo **localhost**.
    Se mostrará la página web predeterminada de Apache para Ubuntu 24 tal como se ve en la foto:
 
+
    ![Paso3](/recursos/apache3.png)
+   
+   
+### MySQL
+Ahora vamos a instalar MySQL, que es un sistema de base de datos donde almacenaremos y gestionaremos los datos de nuestro sitio web.
+Como ya hemos actualizado los paquetes para instalar Apache directamente introducimos el comando para instalar MySQL:
+
+1. Instalación
+   ```bash
+    sudo apt install mysql-server
+    ```
+   
+   ![Paso1](/recursos/mysql1.png)
+
+2. Comprobar el funcionamiento
+   Iniciamos sesión en la terminal para verificar si podemos entrar:
+   ```bash
+     sudo mysql
+   ```
+   
+   ![Paso2](/recursos/mysql2.png)
+   
+
+   Como podemos comprobar, todo está correcto
+
+
+   
+
+
+
+
+
+
+
+
+
+   
 
    
 
