@@ -1,1 +1,3 @@
-#EJERCICIO 2
+# EJERCICIO 2 - Configuración básica de Apache
+
+
