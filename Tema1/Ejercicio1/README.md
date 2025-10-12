@@ -1,6 +1,6 @@
 # EJERCICIO 1 - Instalación de Apache
 
-## Contenidos
+## Índice
 - [Instalación](#instalación)
   - [Apache](#apache)
   - [MySQL](#mysql)
