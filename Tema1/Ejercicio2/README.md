@@ -19,6 +19,8 @@ Por lo tanto, para hacer que Apache también use el puerto 81 añadiremos **List
 ![Paso1](/recursos/tema1/ejercicio2/puerto81.png)
 
 
+Para guardar los cambios hacemos Ctrl + O y para salir Ctrl + X. 
+
 
 ## Nuevo dominio
 
