@@ -21,7 +21,12 @@ Por lo tanto, para hacer que Apache también use el puerto 81 añadiremos **List
 
 Para guardar los cambios hacemos Ctrl + O y para salir Ctrl + X. 
 
-Por último, reiniciamos el servidor Apache para que se hagan efectivos los cambios. Para ello usamos el comando 
+Ahora, reiniciamos el servidor Apache para que se hagan efectivos los cambios. Para ello usamos el comando 
+```bash
+sudo service apache2 restart
+```
+
+
 
 
 ## Nuevo dominio
