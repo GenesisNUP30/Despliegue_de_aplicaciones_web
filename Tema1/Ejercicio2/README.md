@@ -59,8 +59,11 @@ Para acceder a ella introducimos este comando:
 sudo nano /etc/apache2/conf-available/security.conf
 ```
 
+Al abrir el archivo vemos esta línea: 
+
+![Imagen 6](/recursos/tema1/ejercicio2/servertokens1.png)
 
 
-
+OS significa que en la cabecera veremos la información del 
 
 
