@@ -31,7 +31,8 @@ A partir de ahora, podemos usar el puerto 81 escribiendo en el navegador **local
 
 
 
-## Nuevo dominio
+## Añadir el dominio “marisma.intranet” en el fichero “hosts”
+
 
 
 
