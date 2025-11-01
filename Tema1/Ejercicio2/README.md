@@ -1,13 +1,7 @@
 # EJERCICIO 2 - Configuración básica de Apache
 
-## Índice
-- [Añadir puerto 81](#puerto-81)
-- [Nuevo dominio](#nuevo-dominio)
-
-
-
-## Hacer que Apache escuche por el puerto 81
-Tenemos que editar el archivo de configuración de puertos de Apache **ports.conf**. Para ello usamos el siguiente comando:
+## 1. Hacer que Apache escuche por el puerto 81
+Tenemos que editar el archivo de configuración de puertos de Apache **ports.conf**, que especifica los puertos en los que el servidor escuchará las peticiones entrantes. Para ello usamos el siguiente comando:
 ```bash
 sudo nano /etc/apache2/ports.conf
 ```
@@ -31,7 +25,9 @@ A partir de ahora, podemos usar el puerto 81 escribiendo en el navegador **local
 
 
 
-## Añadir el dominio “marisma.intranet” en el fichero “hosts”
+##2. Añadir el dominio “marisma.intranet” en el fichero “hosts”
+Al agregar este dominio podremos acceder a nuestra página escribiendo marisma.intranet en el navegador. Por eso, tenemos que editar el fichero **/etc/hosts**, que se encarga de asociar nombres de dominio con direcciones IP. 
+
 
 
 
