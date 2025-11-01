@@ -1,12 +1,12 @@
 # EJERCICIO 2 - Configuración básica de Apache
 
 ## Índice
-- [Añadir puerto 80](#puerto-80)
+- [Añadir puerto 81](#puerto-81)
 - [Nuevo dominio](#nuevo-dominio)
 
 
 
-## Puerto 80
+## Hacer que Apache escuche por el puerto 81
 Tenemos que editar el archivo de configuración de puertos de Apache **ports.conf**. Para ello usamos el siguiente comando:
 ```bash
 sudo nano /etc/apache2/ports.conf
