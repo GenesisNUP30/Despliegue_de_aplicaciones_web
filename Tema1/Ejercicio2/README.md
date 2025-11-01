@@ -54,8 +54,10 @@ Ahora escribimos en el navegador **http://marisma.intranet** y nos saldrá el se
 ## 3. Cambia la directiva “ServerTokens” para mostrar el nombre del producto.
 Esta directiva controla la cantidad de información sobre el servidor que se incluye en la cabecera de la respuesta HTTP y así aumentar la seguridad. 
 
-
+Para acceder a ella introducimos este comando: 
+```bash
 sudo nano /etc/apache2/conf-available/security.conf
+```
 
 
 
