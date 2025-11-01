@@ -35,12 +35,15 @@ sudo nano /etc/hosts
 
 Una vez que se nos abra el fichero veremos un contenido parecido a este:
 
-![Imagen 1](/recursos/tema1/ejercicio2/dominio1.png)
+![Imagen 3](/recursos/tema1/ejercicio2/dominio1.png)
 
 En mi caso, para mi dirección IP 127.0.0.1 (que es el servidor de mi equipo local) tengo asociado el nombre de dominio **locahost** por eso puedo escribir en el navegador tanto 127.0.0.1 como localhost. 
 Como queremos asociar el nuevo nombre de dominio marisma.intranet a nuestro servidor vamos a agregar la siguiente línea: 
-**127.0.0.1   marisma.intranet**
+**127.0.0.1   marisma.intranet**. 
 
+Debería quedar así: 
+
+![Imagen 4](/recursos/tema1/ejercicio2/dominio2.png)
 
 
 
