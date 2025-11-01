@@ -25,7 +25,7 @@ A partir de ahora, podemos usar el puerto 81 escribiendo en el navegador **local
 
 
 
-##2. Añadir el dominio “marisma.intranet” en el fichero “hosts”
+## 2. Añadir el dominio “marisma.intranet” en el fichero “hosts”
 Al agregar este dominio podremos acceder a nuestra página escribiendo marisma.intranet en el navegador. Por eso, tenemos que editar el fichero **/etc/hosts**, que se encarga de asociar nombres de dominio con direcciones IP. 
 
 
