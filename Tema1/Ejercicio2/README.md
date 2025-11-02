@@ -52,9 +52,9 @@ Ahora escribimos en el navegador **http://marisma.intranet** y nos saldrá el se
 
 
 ## 3. Cambia la directiva “ServerTokens” para mostrar el nombre del producto.
-Esta directiva controla la cantidad de información sobre el servidor que se incluye en la cabecera de la respuesta HTTP y así aumentar la seguridad. 
+Esta directiva controla la cantidad de información sobre el servidor que se incluye en la cabecera de la respuesta HTTP y así aumentar la seguridad. El archivo donde se encuentra es security.conf. 
 
-Para acceder a ella introducimos este comando: 
+Para acceder a él introducimos este comando: 
 ```bash
 sudo nano /etc/apache2/conf-available/security.conf
 ```
@@ -102,7 +102,14 @@ Para ver si lo tenemos activado o no vamos a abrir una página que no exista com
 
 ![Imagen 12](/recursos/tema1/ejercicio2/serversignature1.png)
 
+En mi caso sí está activada. 
 
+El archivo donde se encuentra esta directiva también es security.conf por lo que para abrirlo introducimos:
+```bash
+sudo nano /etc/apache2/conf-available/security.conf
+```
+
+Vemos que pone **ServerSignature On**, lo que corrobora lo que ya sabíamos: que la directiva **ServerSignature** está activada. Si quisiéramos desactivarla cambiaríamos **On** por **Off**. 
 
 
   
