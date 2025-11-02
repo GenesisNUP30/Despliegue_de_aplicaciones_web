@@ -79,6 +79,8 @@ Al abrir el archivo vemos esta línea:
   ```
   La información que nos saldrá en **Server** será la misma que en el navegador:
 
+  ![Imagen 7](/recursos/tema1/ejercicio2/servertokens2.png)
+
 
   
 
