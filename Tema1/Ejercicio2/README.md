@@ -64,6 +64,34 @@ Al abrir el archivo vemos esta línea:
 ![Imagen 6](/recursos/tema1/ejercicio2/servertokens1.png)
 
 
-OS significa que en la cabecera veremos la información del 
+**OS** significa que en la cabecera veremos la versión de Apache y el sistema operativo sobre el que se está ejecutando. Para ver esta información hay 2 formas que podemos usar:
+- Desde el navegador:
+  1. Abre localhost
+  2. Pulsa **F12** y entra en **Red (Network)**
+  3. Recarga la página
+  4. Pulsa en una petición, ve al apartado **Cabecera de la respuesta (Response header)** y fijate la línea **Server**
+ 
+  ![Imagen 7](/recursos/tema1/ejercicio2/servertokens2.png)
+
+- Desde la terminal con el comando:
+  ```bash
+  curl -I http://localhost
+  ```
+  La información que nos saldrá en **Server** será la misma que en el navegador:
+
+  ![Imagen 8](/recursos/tema1/ejercicio2/servertokens3.png)
+
+
+
+  
+
+  
+
+  
+  
+
+
+
+
 
 
