@@ -113,7 +113,7 @@ Vemos que pone **ServerSignature On**, lo que corrobora lo que ya sabíamos: que
 
 Al hacerlo ya no saldría el pie de página en la página de error:
 
-
+![Imagen 13](/recursos/tema1/ejercicio2/serversignature2.png)
   
 
   
