@@ -79,10 +79,29 @@ Al abrir el archivo vemos esta línea:
   ```
   La información que nos saldrá en **Server** será la misma que en el navegador:
 
-  ![Imagen 7](/recursos/tema1/ejercicio2/servertokens3.png)
+  ![Imagen 8](/recursos/tema1/ejercicio2/servertokens3.png)
 
 
-  
+Entonces, para mostrar el nombre de producto cambiamos **OS** por **Prod** tal y como se ve en la imagen:
+
+![Imagen 9](/recursos/tema1/ejercicio2/servertokens4.png)
+
+Guardamos y cerramos el archivo y reiniciamos Apache. Si volvemos al navegador ahora solo aparecerá **Apache**: 
+
+![Imagen 10](/recursos/tema1/ejercicio2/servertokens5.png)
+
+Y lo mismo nos aparecerá si lo vemos desde la terminal: 
+
+![Imagen 11](/recursos/tema1/ejercicio2/servertokens6.png)
+
+
+## 4. Pie de página en páginas generadas por Apache (directiva "ServerSignature")
+Esta directiva controla si se añade o no un pie de página con información del servidor, como su nombre y versión, en los documentos que genera automáticamente (por ejemplo, en los mensajes de error). 
+
+Para ver si lo tenemos activado o no vamos a abrir una página que no exista como **http://localhost/holamundo**. Nos saltará una página de error 404 y, si la directiva está activada, nos saldrá el pie de página como en la imagen: 
+
+![Imagen 12](/recursos/tema1/ejercicio2/serversignature1.png)
+
 
 
 
