@@ -111,6 +111,9 @@ sudo nano /etc/apache2/conf-available/security.conf
 
 Vemos que pone **ServerSignature On**, lo que corrobora lo que ya sabíamos: que la directiva **ServerSignature** está activada. Si quisiéramos desactivarla cambiaríamos **On** por **Off**. 
 
+Al hacerlo ya no saldría el pie de página en la página de error:
+
+![Imagen 13](/recursos/tema1/ejercicio2/serversignature2.png)
 
   
 
