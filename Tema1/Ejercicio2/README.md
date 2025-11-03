@@ -114,12 +114,37 @@ Vemos que pone **ServerSignature On**, lo que corrobora lo que ya sabíamos: que
 Al hacerlo ya no saldría el pie de página en la página de error:
 
 ![Imagen 13](/recursos/tema1/ejercicio2/serversignature2.png)
-  
 
   
+## 5. Crear 2 directorios de prueba
 
-  
-  
+Todas las páginas del servidor se alojan en el directorio **/var/www/html/**, que es la carpeta raíz por defecto de estos archivos. Por lo tanto, para crear los 2 directorios vamos a movermos a este directorio con 
+```bash
+cd /var/www/html/
+```
+Una vez dentro vamos a crear 2 carpetas, una para cada página, y así las tenemos separadas con sus respectivos archivos. Para ello usamos la orden **mkdir** que es el comando de Ubuntu que se usa para crer directorios o carpetas: 
+```bash
+sudo mkdir prueba prueba2
+```
+
+Ahora vamos a crear un index para que cuando se abra la página se muestre un mensaje. Hacemos: 
+```bash
+sudo nano prueba/index.html
+```
+Al hacer directamente **nano** crea el archivo si no existe.
+
+Cuando se nos abrá el editor lo único que tenemos que hacer es crear una estructura html sencilla para mostrar un mensaje. Yo he puesto esto:
+```bash
+<h1>Página de prueba</h1>
+```
+
+Guardamos y cerramos el archivo. 
+
+Lo mismo hacemos con la otra página, lo único que su contenido será algo como esto: 
+```bash
+<h1>Página de prueba2 </h1>
+```
+
 
 
 
