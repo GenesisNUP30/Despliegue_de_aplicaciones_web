@@ -142,8 +142,11 @@ Guardamos y cerramos el archivo.
 
 Lo mismo hacemos con la otra página, lo único que su contenido será algo como esto: 
 ```bash
-<h1>Página de prueba2 </h1>
+<h1>Página de prueba2</h1>
 ```
+
+Para comprobar que nuestras páginas funcionan abrimos el navegador y escribimos **http://localhost/prueba/** y nos debería aparecer el contenido del html. Si probamos la otra página haciendo **http://localhost/prueba2/** también deberíamos ver el contenido, como se ven en las imágenes. 
+
 
 
 
