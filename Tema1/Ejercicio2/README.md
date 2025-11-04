@@ -165,24 +165,19 @@ Volvemos a ponerle contenido como:
 
 Usamos el mismo comando para prueba2 pero con otro nombre de fichero, como ejemplo2.html
 
-
-![Imagen 17](/recursos/tema1/ejercicio2/directorio3.png)
-
-Y con los otros lo mismo. 
-
 Por último vamos a comprobar que nuestras páginas se ven desde el navegador. Para ver prueba:
 - **http://localhost/prueba/**
-  ![Imagen 18](/recursos/tema1/ejercicio2/directorio4.png)
+  ![Imagen 17](/recursos/tema1/ejercicio2/directorio4.png)
 
 - **http://localhost/prueba/ejemplo1.html** 
-  ![Imagen 19](/recursos/tema1/ejercicio2/directorio5.png)
+  ![Imagen 18](/recursos/tema1/ejercicio2/directorio5.png)
 
 Probamos la otra página prueba2 haciendo:
 - **http://localhost/prueba2/** 
-  ![Imagen 20](/recursos/tema1/ejercicio2/directorio6.png)
+  ![Imagen 19](/recursos/tema1/ejercicio2/directorio6.png)
 
 - **http://localhost/prueba2/ejemplo2.html**
-  ![Imagen 21](/recursos/tema1/ejercicio2/directorio7.png)
+  ![Imagen 20](/recursos/tema1/ejercicio2/directorio7.png)
 
 
 
