@@ -134,7 +134,7 @@ Ahora vamos a crear un index para que cuando se abra la página se muestre un me
 ```bash
 sudo nano prueba/index.html
 ```
-Al hacer directamente **nano** crea el archivo si no existe.
+Al hacer directamente **nano** crea el archivo si no existe previamente.
 
 Cuando se nos abrá el editor lo único que tenemos que hacer es crear una estructura html sencilla para mostrar un mensaje. Yo he puesto esto:
 ```bash
@@ -146,17 +146,43 @@ Cuando se nos abrá el editor lo único que tenemos que hacer es crear una estru
 
 Guardamos y cerramos el archivo. 
 
-Lo mismo hacemos con la otra página, lo único que su contenido será algo como esto: 
+Lo mismo hacemos con la otra página, lo único que su contenido algo distinto para poder diferenciarlas
+
+Para poder tener varias páginas dentro de cada una de estas tenemos que crear tantos archivos html como páginas querramos tener. Por ejemplo, ejemplo1.html y ejemplo2.html en cada directorio. 
+Esto lo hacemos con el mismo comando de antes: 
 ```bash
-<h1>Página de prueba2</h1>
+sudo nano prueba/ejemplo1.html
 ```
 
-Para comprobar que nuestras páginas funcionan abrimos el navegador y escribimos **http://localhost/prueba/** y nos debería aparecer el contenido del html. Si probamos la otra página haciendo **http://localhost/prueba2/** también deberíamos ver el contenido, como se ven en las imágenes. 
+Volvemos a ponerle contenido como:
+```bash
+<html>
+  <h1>Esto es ejemplo1 dentro del directorio prueba</h1>
+</html>
+```
 
-![Imagen 15](/recursos/tema1/ejercicio2/directorio3.png)
+![Imagen 16](/recursos/tema1/ejercicio2/directorio3.png)
 
-![Imagen 15](/recursos/tema1/ejercicio2/directorio4.png)
+Usamos el mismo comando para prueba2 pero con otro nombre de fichero, como ejemplo2.html
 
+
+![Imagen 17](/recursos/tema1/ejercicio2/directorio3.png)
+
+Y con los otros lo mismo. 
+
+Por último vamos a comprobar que nuestras páginas se ven desde el navegador. Para ver prueba:
+- **http://localhost/prueba/**
+  ![Imagen 18](/recursos/tema1/ejercicio2/directorio4.png)
+
+- **http://localhost/prueba/ejemplo1.html** 
+  ![Imagen 19](/recursos/tema1/ejercicio2/directorio5.png)
+
+Probamos la otra página prueba2 haciendo:
+- **http://localhost/prueba2/** 
+  ![Imagen 20](/recursos/tema1/ejercicio2/directorio6.png)
+
+- **http://localhost/prueba2/ejemplo2.html**
+  ![Imagen 21](/recursos/tema1/ejercicio2/directorio7.png)
 
 
 
