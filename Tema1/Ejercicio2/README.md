@@ -127,6 +127,9 @@ Una vez dentro vamos a crear 2 carpetas, una para cada página, y así las tenem
 sudo mkdir prueba prueba2
 ```
 
+![Imagen 14](/recursos/tema1/ejercicio2/directorio1.png)
+Como se puede ver tenemos los 2 directorios creados
+
 Ahora vamos a crear un index para que cuando se abra la página se muestre un mensaje. Hacemos: 
 ```bash
 sudo nano prueba/index.html
@@ -135,8 +138,11 @@ Al hacer directamente **nano** crea el archivo si no existe.
 
 Cuando se nos abrá el editor lo único que tenemos que hacer es crear una estructura html sencilla para mostrar un mensaje. Yo he puesto esto:
 ```bash
+<html>
 <h1>Página de prueba</h1>
+</html>
 ```
+![Imagen 15](/recursos/tema1/ejercicio2/directorio2.png)
 
 Guardamos y cerramos el archivo. 
 
@@ -147,6 +153,9 @@ Lo mismo hacemos con la otra página, lo único que su contenido será algo como
 
 Para comprobar que nuestras páginas funcionan abrimos el navegador y escribimos **http://localhost/prueba/** y nos debería aparecer el contenido del html. Si probamos la otra página haciendo **http://localhost/prueba2/** también deberíamos ver el contenido, como se ven en las imágenes. 
 
+![Imagen 15](/recursos/tema1/ejercicio2/directorio3.png)
+
+![Imagen 15](/recursos/tema1/ejercicio2/directorio4.png)
 
 
 
