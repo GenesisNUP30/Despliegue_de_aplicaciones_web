@@ -128,6 +128,7 @@ sudo mkdir prueba prueba2
 ```
 
 ![Imagen 14](/recursos/tema1/ejercicio2/directorio1.png)
+
 Como se puede ver tenemos los 2 directorios creados
 
 Ahora vamos a crear un index para que cuando se abra la página se muestre un mensaje. Hacemos: 
@@ -146,9 +147,9 @@ Cuando se nos abrá el editor lo único que tenemos que hacer es crear una estru
 
 Guardamos y cerramos el archivo. 
 
-Lo mismo hacemos con la otra página, lo único que su contenido algo distinto para poder diferenciarlas
+Lo mismo hacemos con la otra página prueba2, lo único que su contenido algo distinto para poder diferenciarlas
 
-Para poder tener varias páginas dentro de cada una de estas tenemos que crear tantos archivos html como páginas querramos tener. Por ejemplo, ejemplo1.html y ejemplo2.html en cada directorio. 
+Para poder tener varias páginas dentro de cada una de estos directorios tenemos que crear tantos archivos html como páginas querramos tener. Por ejemplo, ejemplo1.html y ejemplo2.html en cada directorio. 
 Esto lo hacemos con el mismo comando de antes: 
 ```bash
 sudo nano prueba/ejemplo1.html
@@ -167,16 +168,20 @@ Usamos el mismo comando para prueba2 pero con otro nombre de fichero, como ejemp
 
 Por último vamos a comprobar que nuestras páginas se ven desde el navegador. Para ver prueba:
 - **http://localhost/prueba/**
+  
   ![Imagen 17](/recursos/tema1/ejercicio2/directorio4.png)
 
-- **http://localhost/prueba/ejemplo1.html** 
+- **http://localhost/prueba/ejemplo1.html**
+  
   ![Imagen 18](/recursos/tema1/ejercicio2/directorio5.png)
 
 Probamos la otra página prueba2 haciendo:
-- **http://localhost/prueba2/** 
+- **http://localhost/prueba2/**
+  
   ![Imagen 19](/recursos/tema1/ejercicio2/directorio6.png)
 
 - **http://localhost/prueba2/ejemplo2.html**
+  
   ![Imagen 20](/recursos/tema1/ejercicio2/directorio7.png)
 
 
