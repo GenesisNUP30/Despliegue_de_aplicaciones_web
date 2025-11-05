@@ -142,7 +142,7 @@ Cuando se nos abrá el editor lo único que tenemos que hacer es crear una estru
 <h1>Página de prueba</h1>
 </html>
 ```
-![Imagen 15](/recursos/tema1/ejercicio2/directorio2.png)
+
 
 Guardamos y cerramos el archivo. 
 
