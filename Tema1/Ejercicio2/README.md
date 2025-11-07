@@ -143,6 +143,7 @@ Cuando se nos abrá el editor lo único que tenemos que hacer es crear una estru
 </html>
 ```
 
+![Imagen 16](/recursos/tema1/ejercicio2/directorio2.png)
 
 Guardamos y cerramos el archivo. 
 
