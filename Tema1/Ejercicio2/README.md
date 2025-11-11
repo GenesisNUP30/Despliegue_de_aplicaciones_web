@@ -185,6 +185,17 @@ Probamos la otra página prueba2 haciendo:
   ![Imagen 20](/recursos/tema1/ejercicio2/directorio7.png)
 
 
+## 6. Redireccionar el contenido de la carpeta “prueba” hacia “prueba2”
+Para eso debemos editar el archivo de configuracion **000-default.conf** que contiene la configuración de nuestro sitio web de Apache. El comando sería: 
+```bash
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
+
+Una vez dentro vamos a usar la directiva **Redirect**, que como bien indica su nombre, sirve para redireccionar automáticamente una solicitud web de una URL a otra. 
+Dentro del bloque <VirtualHost *:80>, se añade:
+**Redirect permanent /prueba http://localhost/prueba2**
+
+Yo he usado **permanent** porque así indico que la redirección es de forma permanente. Una vez guardado el cambio reiniciamos el servidor. 
 
 
 
