@@ -195,7 +195,46 @@ Una vez dentro vamos a usar la directiva **Redirect**, que como bien indica su n
 Dentro del bloque <VirtualHost *:80>, se añade:
 **Redirect permanent /prueba http://localhost/prueba2**
 
+![Imagen 21](/recursos/tema1/ejercicio2/redirect1.png)
+
 Yo he usado **permanent** porque así indico que la redirección es de forma permanente. Una vez guardado el cambio reiniciamos el servidor. 
+
+Ahora en el navegador escribimos **http://localhost/prueba** como se ve en la foto
+
+![Imagen 20](/recursos/tema1/ejercicio2/redirect2.png)
+
+Al hacer intro podemos observar como nos redirige a prueba2 (también lo podemos ver en la URL que ahora pone **/prueba2**)
+
+![Imagen 20](/recursos/tema1/ejercicio2/redirect3.png)
+
+
+## 7. Redireccionar tan solo una página en lugar de toda la carpeta. 
+
+Volvemos a editar el archivo **000-default.conf** como en el ejercicio anterior pero ahora con una ruta distinta para indicar que redirigimos una página
+
+**Redirect permanent /prueba/ejemplo1.html http://localhost/prueba2/ejemplo2.html**
+
+![Imagen 20](/recursos/tema1/ejercicio2/redirect4.png)
+
+Guardamos los cambios, cerramos el archivo y reiniciamos el servidor. Ahora probamos la redirección escribiendo en la URL **http://localhost/prueba2/ejemplo2.html** y como vemos se efectua correctamente: 
+
+![Imagen 20](/recursos/tema1/ejercicio2/redirect5.png)
+
+
+## 8. Usar la directiva userdir
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
