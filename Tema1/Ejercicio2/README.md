@@ -244,7 +244,35 @@ Para ponerla en práctica debemos:
 
 
 ## 9. Usar la directiva alias para redireccionar a una carpeta dentro del directorio de usuario.
+1. Creamos la carperta y su contenido:
+   ```batch
+   mkdir ~/ejercicio9
+   echo "<html><h1>Este es el ejercicio de la directiva alias</h1></html>" > ~/ejercicio9/index.html
+   ```
+   ![Imagen 27](/recursos/tema1/ejercicio2/alias1.png)
+   
+2. Añadimos la directiva **Alias** en la configuración de Apache
+   ```batch
+   sudo nano /etc/apache2/sites-available/000-default.conf
+   ```
 
+   Dentro del archivo añadimos:
+   ```batch
+   Alias /misarchivos /home/genesis/ejercicio9
+   <Directory /home/genesis/ejercicio9>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+   </Directory>
+   ```
+
+   ![Imagen 27](/recursos/tema1/ejercicio2/alias2.png)
+   
+3. Reiniciamos el servidor apache
+
+   
+   
+   
 
 
 
