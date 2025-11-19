@@ -201,11 +201,11 @@ Yo he usado **permanent** porque así indico que la redirección es de forma per
 
 Ahora en el navegador escribimos **http://localhost/prueba** como se ve en la foto
 
-![Imagen 20](/recursos/tema1/ejercicio2/redirect2.png)
+![Imagen 22](/recursos/tema1/ejercicio2/redirect2.png)
 
 Al hacer intro podemos observar como nos redirige a prueba2 (también lo podemos ver en la URL que ahora pone **/prueba2**)
 
-![Imagen 20](/recursos/tema1/ejercicio2/redirect3.png)
+![Imagen 23](/recursos/tema1/ejercicio2/redirect3.png)
 
 
 ## 7. Redireccionar tan solo una página en lugar de toda la carpeta. 
@@ -214,15 +214,44 @@ Volvemos a editar el archivo **000-default.conf** como en el ejercicio anterior 
 
 **Redirect permanent /prueba/ejemplo1.html http://localhost/prueba2/ejemplo2.html**
 
-![Imagen 20](/recursos/tema1/ejercicio2/redirect4.png)
+![Imagen 24](/recursos/tema1/ejercicio2/redirect4.png)
 
 Guardamos los cambios, cerramos el archivo y reiniciamos el servidor. Ahora probamos la redirección escribiendo en la URL **http://localhost/prueba2/ejemplo2.html** y como vemos se efectua correctamente: 
 
-![Imagen 20](/recursos/tema1/ejercicio2/redirect5.png)
+![Imagen 25](/recursos/tema1/ejercicio2/redirect5.png)
 
 
 ## 8. Usar la directiva userdir
+Esta directiva permite que cada usuario de un sistema pueda tener su propio sitio web alojado en una subcarpeta dentro de su directorio personal como http://localhost/~usuario/.
+Para ponerla en práctica debemos:
 
+1. Activar el módulo userdir
+   ```batch
+   sudo a2enmod userdir
+   ```
+2. Crear el directorio para el usuario (en mi caso genesis)
+   ```batch
+   mkdir ~/public_html
+   echo "<html><h1>Mi sitio personal usando la directiva userdir</h1></html>" > ~/public_html/index.html
+   ```
+
+   ![Imagen 26](/recursos/tema1/ejercicio2/userdir1.png)
+
+   Se tiene que llamar public_html porque al activar el módulo **userdir** Apache espera que los sitios personales estén en una carpeta llamada public_html dentro del directorio de cada usuario.
+   El echo sirve para que imprime el mensaje por pantalla y redirige la salida al archivo index.html, que como no existe lo crea en el momento.
+
+3. Reinciar Apache
+
+
+## 9. Usar la directiva alias para redireccionar a una carpeta dentro del directorio de usuario.
+
+
+
+
+   
+
+   
+   
 
 
 
