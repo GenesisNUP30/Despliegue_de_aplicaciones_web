@@ -266,12 +266,24 @@ Para ponerla en práctica debemos:
    </Directory>
    ```
 
+   Con **Alias /misarchivos /home/genesis/ejercicio9** consigo redireccionar una URL a una carpeta de mi sistema. 
+
    ![Imagen 27](/recursos/tema1/ejercicio2/alias2.png)
+
    
 3. Reiniciamos el servidor apache
 
+Si hacemos **localhost/misarchivos** nos sale el contenido de ejercicio9: 
+
+![Imagen 28](/recursos/tema1/ejercicio2/alias3.png)
    
-   
+
+## 10. ¿Para qué sirve la directiva Options y dónde aparece? Comprueba si apache indexa los directorios. Si es así, ¿cómo lo desactivamos?
+- **Options**: controla qué características están habilitadas en un directorio.
+  Aparece en archivos de configuración del servidor web de Apache dentro de directivas como Directory o Files o en ficheros **.htaccess**.
+- Para saber si Apache indexa o no, accedemos a una URL de un directorio que no contenga un archivo de índice (como index.html). Si está activado 
+
+
    
 
 
