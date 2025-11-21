@@ -1,4 +1,4 @@
-# EJERCICIO 2 - Configuración básica de Apache
+# EJERCICIO 2.1 - Configuración de Apache
 
 ## 1. Hacer que Apache escuche por el puerto 81
 Tenemos que editar el archivo de configuración de puertos de Apache **ports.conf**, que especifica los puertos en los que el servidor escuchará las peticiones entrantes. Para ello usamos el siguiente comando:
@@ -297,8 +297,7 @@ Si hacemos **localhost/misarchivos** nos sale el contenido de ejercicio9:
 
   Después de los cambios debemos reiniciar Apache. 
   
-
-
+# EJERCICIO 2.2 - Trabajando con scripts
   
 
 
