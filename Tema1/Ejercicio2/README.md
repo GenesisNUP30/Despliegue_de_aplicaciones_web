@@ -281,7 +281,25 @@ Si hacemos **localhost/misarchivos** nos sale el contenido de ejercicio9:
 ## 10. ¿Para qué sirve la directiva Options y dónde aparece? Comprueba si apache indexa los directorios. Si es así, ¿cómo lo desactivamos?
 - **Options**: controla qué características están habilitadas en un directorio.
   Aparece en archivos de configuración del servidor web de Apache dentro de directivas como Directory o Files o en ficheros **.htaccess**.
-- Para saber si Apache indexa o no, accedemos a una URL de un directorio que no contenga un archivo de índice (como index.html). Si está activado 
+- Para saber si Apache indexa o no, accedemos a una URL de un directorio que no contenga un archivo de índice (como index.html).
+  En mi caso, hice un directorio con 2 archivos .txt dentro. Si está activado, nos debería salir una lista con los archivos que hay en ese directorio.
+
+  ![Imagen 29](/recursos/tema1/ejercicio2/indexado1.png)
+
+  Como vemos, está activado. Para quitarlo entraríamos en la configuración del sitio que queremos editar y modificaríamos la línea Directory de esta manera:
+  ```batch
+  <Directory /var/www/html>
+    Options -Indexes FollowSymLinks
+  </Directory>
+  ```
+
+  -Indexes quita el indexado.
+
+  Después de los cambios debemos reiniciar Apache. 
+  
+
+
+  
 
 
    
