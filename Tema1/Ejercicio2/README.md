@@ -301,13 +301,24 @@ Si hacemos **localhost/misarchivos** nos sale el contenido de ejercicio9:
 Para hacer los scripts he creado una carptea en mi directorio personal llamada **scripts-ej2**. Todos los scripts deben tener extensión .sh. 
 
 ## 1. Crea un script que añada un puerto de escucha en el fichero de configuración de Apache. El puerto se recibirá como parámetro en la llamada y se comprobará que no esté ya presente en el fichero de configuración.
-Dentro de la carpeta hacemos
+Dentro de la carpeta creamos el script haciendo
 ```batch
 nano script1.sh
+```
+El script será el siguiente: 
 
+![Imagen 30](/recursos/tema1/ejercicio2/script1.png)
+
+Guardamos con Ctrl+O y antes de ejecutarlo le damos permisos de ejecución con **chmod 755 script1.sh**. Lo haremos con todos los scripts para asegurarnos de poder ejecutarlos.
+Para ejecutar el script hacemos **./nombre_script argumento**. 
+
+![Imagen 30](/recursos/tema1/ejercicio2/script1_2.png)
+
+Como vemos la comprobación funciona pues el puerto 81 ya estaba añadido de la otra práctica pero el puerto 82 si se añadió perfectamente.
 
 ## 2. Crea un script que añada un nombre de dominio y una ip al fichero hosts. Debemos comprobar que no existe dicho dominio en el fichero hosts
 
+![Imagen 31](/recursos/tema1/ejercicio2/script2.png)
 
 
 ## 3. Crea un script que nos permita crear una página web con un título, una cabecera y un mensaje
