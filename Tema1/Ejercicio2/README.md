@@ -320,9 +320,21 @@ Como vemos la comprobación funciona pues el puerto 81 ya estaba añadido de la 
 
 ![Imagen 31](/recursos/tema1/ejercicio2/script2.png)
 
+Le ponemos los permisos de ejecución y ejecutamos. 
+
+![Imagen 31](/recursos/tema1/ejercicio2/script2_2.png)
+
+Como vemos ha añadido correctamente la IP. Hacemos **cat /etc/hosts/** para ver que el contenido del fichero.
 
 ## 3. Crea un script que nos permita crear una página web con un título, una cabecera y un mensaje
 
+Primero: 
+```batch
+nano script3.sh
+```
+El contenido del script será: 
+
+![Imagen 32](/recursos/tema1/ejercicio2/script3.png)
 
 
 
