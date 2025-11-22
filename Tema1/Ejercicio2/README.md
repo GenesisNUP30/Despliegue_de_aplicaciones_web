@@ -336,8 +336,7 @@ El contenido del script será:
 
 ![Imagen 32](/recursos/tema1/ejercicio2/script3.png)
 
-
-
+No olvidemos de darle los permisos de ejecucion antes. 
    
 
-   
+
