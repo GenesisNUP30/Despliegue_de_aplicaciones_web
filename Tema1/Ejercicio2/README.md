@@ -226,11 +226,11 @@ Esta directiva permite que cada usuario de un sistema pueda tener su propio siti
 Para ponerla en práctica debemos:
 
 1. Activar el módulo userdir
-   ```batch
+   ```bash
    sudo a2enmod userdir
    ```
 2. Crear el directorio para el usuario (en mi caso genesis)
-   ```batch
+   ```bash
    mkdir ~/public_html
    echo "<html><h1>Mi sitio personal usando la directiva userdir</h1></html>" > ~/public_html/index.html
    ```
@@ -245,19 +245,19 @@ Para ponerla en práctica debemos:
 
 ## 9. Usar la directiva alias para redireccionar a una carpeta dentro del directorio de usuario.
 1. Creamos la carperta y su contenido:
-   ```batch
+   ```bash
    mkdir ~/ejercicio9
    echo "<html><h1>Este es el ejercicio de la directiva alias</h1></html>" > ~/ejercicio9/index.html
    ```
    ![Imagen 27](/recursos/tema1/ejercicio2/alias1.png)
    
 2. Añadimos la directiva **Alias** en la configuración de Apache
-   ```batch
+   ```bash
    sudo nano /etc/apache2/sites-available/000-default.conf
    ```
 
    Dentro del archivo añadimos:
-   ```batch
+   ```bash
    Alias /misarchivos /home/genesis/ejercicio9
    <Directory /home/genesis/ejercicio9>
     Options Indexes FollowSymLinks
@@ -287,7 +287,7 @@ Si hacemos **localhost/misarchivos** nos sale el contenido de ejercicio9:
   ![Imagen 29](/recursos/tema1/ejercicio2/indexado1.png)
 
   Como vemos, está activado. Para quitarlo entraríamos en la configuración del sitio que queremos editar y modificaríamos la línea Directory de esta manera:
-  ```batch
+  ```bash
   <Directory /var/www/html>
     Options -Indexes FollowSymLinks
   </Directory>
@@ -302,7 +302,7 @@ Para hacer los scripts he creado una carptea en mi directorio personal llamada *
 
 ## 1. Crea un script que añada un puerto de escucha en el fichero de configuración de Apache. El puerto se recibirá como parámetro en la llamada y se comprobará que no esté ya presente en el fichero de configuración.
 Dentro de la carpeta creamos el script haciendo
-```batch
+```bash
 nano script1.sh
 ```
 El script será el siguiente: 
@@ -329,7 +329,7 @@ Como vemos ha añadido correctamente la IP. Hacemos **cat /etc/hosts/** para ver
 ## 3. Crea un script que nos permita crear una página web con un título, una cabecera y un mensaje
 
 Primero: 
-```batch
+```bash
 nano script3.sh
 ```
 El contenido del script será: 
