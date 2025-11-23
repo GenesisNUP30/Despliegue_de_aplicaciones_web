@@ -338,5 +338,7 @@ El contenido del script será:
 
 No olvidemos de darle los permisos de ejecucion antes. 
    
+![Imagen 32](/recursos/tema1/ejercicio2/script3_2.png)
 
+Como se puede ver, se ha creado el sitio index.html en la carpeta scripts-ej2. 
 
