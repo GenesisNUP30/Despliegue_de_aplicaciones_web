@@ -60,11 +60,18 @@ d. Permite el acceso de las peticiones provenientes de "10.3.0.100" con máscara
 ## 4. Modifica la configuración de forma que el acceso a dir1:
 Se permita a "marisma.intranet" y no se permita desde 10.3.0.101"
 
+Esto lo hacemos en el mismo fichero que hemos editado en los ejercicios anteriores, 000.default-conf.
+Borramos o comentamos las otras reglas Requiere que hemos añadido antes y editamos la directiva Directory de esta manera: 
+
+![Imagen 6](/recursos/tema1/ejercicio3/act4.png)
+
 
 ## 5. Modifica la configuración de forma que el acceso a dir2:
 Se permita a "10.3.0.100/8" y no a "marisma.intranet"
 
+![Imagen 6](/recursos/tema1/ejercicio3/act5.png)
 
 
+No olvidemos que después de hacer estos cambios hay que reinciar el servicio de Apache con **sudo service apache2 restart**. 
 
 
