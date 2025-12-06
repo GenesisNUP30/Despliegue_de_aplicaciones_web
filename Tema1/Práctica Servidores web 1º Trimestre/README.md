@@ -17,8 +17,11 @@ Dentro del archivo añadimos las siguientes líneas:
 
 ![Imagen 1](/recursos/tema1/practica/1.png)
 
-Ahora tendríamos que instalar Apache y todo el paquete de MySQL, PHP
-Para instalar Apache:<code> sudo apt install apache2 </code>
+Ahora tendríamos que instalar Apache y todo el paquete de MySQL, PHP. 
+
+- Para instalar Apache: <code> sudo apt install apache2 </code>
+- Para instalar MySQL: <code> sudo apt install mysql-server </code>
+- Para instalar PHP: <code> sudo apt install php libapache2-mod-php php-mysql </code>
 
 
 ### 2. Activar los módulos necesarios para ejecutar php y acceder a mysql
