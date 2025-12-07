@@ -2,13 +2,13 @@
 ## Instalar un servidor web interno para un instituto
 
 
-### 1. Creamos 2 dominios mediante el archivo hosts: centro.intranet y departamentos.centro.intranet. 
+### 1. Crear 2 dominios mediante el archivo hosts: centro.intranet y departamentos.centro.intranet. 
 #### El primero servirá el contenido mediante wordpress y el segundo una aplicación en python
 Para eso editamos el archivo /etc/hosts: 
 ```bash
 sudo nano /etc/hosts
 ```
-Recordemos que para estas operaciones necesitamos permisos de admministrador por eso usamos el usuarios sudo. 
+Recordemos que para estas operaciones necesitamos permisos de administrador por eso usamos el usuarios sudo. 
 Dentro del archivo añadimos las siguientes líneas:
 
 - 127.0.0.1 centro.intranet
@@ -17,7 +17,7 @@ Dentro del archivo añadimos las siguientes líneas:
 
 ![Imagen 1](/recursos/tema1/practica/1.png)
 
-### 2. Instalamos Apache, PHP y MySQL y activamos los módulos necesarios
+### 2. Instalar Apache, PHP y MySQL y activamos los módulos necesarios
 
 Ahora tendríamos que instalar Apache y todo el paquete de MySQL, PHP. 
 Primero actualizamos los paquetes del repositorio de Linux con <code>sudo apt update</code>
@@ -34,8 +34,8 @@ sudo apt install apache2
   sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql php-cgi php-curl php-json
   ```
   Con este comando instalamos:
-  - <code> php-mysql </code>, un módulo PHP que permite que este se comunique con bases de datos basadas en MySQL. 
-  - <code> libapache2-mod-php </code> para permitir que Apache gestione archivos PHP.
+  - <code> php-mysql </code> : un módulo PHP que permite que este se comunique con bases de datos basadas en MySQL. 
+  - <code> libapache2-mod-php </code> : para permitir que Apache gestione archivos PHP.
 
 Después de hacer todas las configuraciones hacemos:
 ```bash
@@ -46,11 +46,11 @@ Para comprobar que el servidor apache está activo hacemos
 sudo systemctl status apache2
 ```
 
-![Imagen 1](/recursos/tema1/practica/2.png)
+![Imagen 2](/recursos/tema1/practica/2.png)
 
 
 
-### 3. Instala y configura wordpress
+### 3. Crear directorios para los dominios
 
 
 
