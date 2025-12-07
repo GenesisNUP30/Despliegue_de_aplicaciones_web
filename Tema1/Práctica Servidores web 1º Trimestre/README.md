@@ -2,9 +2,9 @@
 ## Instalar un servidor web interno para un instituto
 
 
-### 1. Instalación del servidor web apache. 
-#### Usaremos dos dominios mediante el archivo hosts: centro.intranet y departamentos.centro.intranet. El primero servirá el contenido mediante wordpress y el segundo una aplicación en python
-Primero editamos el archivo hosts:
+### 1. Creamos 2 dominios mediante el archivo hosts: centro.intranet y departamentos.centro.intranet. 
+#### El primero servirá el contenido mediante wordpress y el segundo una aplicación en python
+Para eso editamos el archivo /etc/hosts: 
 ```bash
 sudo nano /etc/hosts
 ```
@@ -17,14 +17,34 @@ Dentro del archivo añadimos las siguientes líneas:
 
 ![Imagen 1](/recursos/tema1/practica/1.png)
 
+### 2. Instalamos Apache, PHP y MySQL y activamos los módulos necesarios
+
 Ahora tendríamos que instalar Apache y todo el paquete de MySQL, PHP. 
+Primero actualizamos los paquetes del repositorio de Linux con <code>sudo apt update</code>
+- Para instalar Apache:
+```bash
+sudo apt install apache2
+```
+- Para instalar MySQL:
+  ```bash
+  sudo apt install mysql-server
+  ```
+- Para instalar PHP:
+  ```bash
+  sudo apt-get install php libapache2-mod-php php-mcrypt php-mysql php-cgi php-curl php-json
+  ```
+  Con este comando instalamos:
+  - <code> php-mysql </code>, un módulo PHP que permite que este se comunique con bases de datos basadas en MySQL. 
+  - <code> libapache2-mod-php </code> para permitir que Apache gestione archivos PHP.
 
-- Para instalar Apache: <code> sudo apt install apache2 </code>
-- Para instalar MySQL: <code> sudo apt install mysql-server </code>
-- Para instalar PHP: <code> sudo apt install php libapache2-mod-php php-mysql </code>
-
-
-### 2. Activar los módulos necesarios para ejecutar php y acceder a mysql
+Después de hacer todas las configuraciones hacemos:
+```bash
+sudo systemctl restart apache2
+```
+Para comprobar que el servidor apache está activo hacemos
+```bash
+sudo systemctl status apache2
+```
 
 
 
