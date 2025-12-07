@@ -11,9 +11,9 @@ sudo nano /etc/hosts
 Recordemos que para estas operaciones necesitamos permisos de admministrador por eso usamos el usuarios sudo. 
 Dentro del archivo añadimos las siguientes líneas:
 
-127.0.0.1 centro.intranet
-127.0.0.1 departamentos.centro.intranet
-127.0.0.1 servidor2.centro.intranet
+- 127.0.0.1 centro.intranet
+- 127.0.0.1 departamentos.centro.intranet
+- 127.0.0.1 servidor2.centro.intranet
 
 ![Imagen 1](/recursos/tema1/practica/1.png)
 
@@ -46,6 +46,7 @@ Para comprobar que el servidor apache está activo hacemos
 sudo systemctl status apache2
 ```
 
+![Imagen 1](/recursos/tema1/practica/2.png)
 
 
 
