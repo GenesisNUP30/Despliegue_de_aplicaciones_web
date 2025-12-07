@@ -15,7 +15,10 @@ Dentro del archivo añadimos las siguientes líneas:
 - 127.0.0.1 departamentos.centro.intranet
 - 127.0.0.1 servidor2.centro.intranet
 
+Para guardar y cerrar Ctrl + C y Ctrl + X. 
+
 ![Imagen 1](/recursos/tema1/practica/1.png)
+
 
 ### 2. Instalar Apache, PHP y MySQL y activamos los módulos necesarios
 
@@ -51,8 +54,60 @@ sudo systemctl status apache2
 
 
 ### 3. Crear directorios para los dominios
+Tenemos que crear los directorios para los 2 sitios con
+```bash
+sudo mkdir -p /var/www/centro.intranet
+sudo mkdir -p /var/www/departamentos.centro.intranet
+```
+
+![Imagen 2](/recursos/tema1/practica/3.png)
 
 
+### 3.1. Configurar VirtualHost en Apache
+Para configurar centro.intranet:
+```bash
+sudo nano /etc/apache2/sites-available/centro.intranet.conf
+```
+
+Y dentro del archivio ponemos este contenido:
+```bash
+<VirtualHost *:80>
+    ServerName centro.intranet
+    DocumentRoot /var/www/centro.intranet
+
+    <Directory /var/www/centro.intranet>
+        AllowOverride All
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+Y para el otro sitio hacemos lo mismo:
+```bash
+sudo nano /etc/apache2/sites-available/departamentos.centro.intranet.conf
+```
+
+Y dentro de este fichero ponemos:
+```bash
+<VirtualHost *:80>
+    ServerName departamentos.centro.intranet
+    DocumentRoot /var/www/departamentos.centro.intranet
+
+    WSGIScriptAlias / /var/www/departamentos.centro.intranet/app.wsgi
+
+    <Directory /var/www/departamentos.centro.intranet>
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+Por último, habilitamos los sitios que hemos creado con
+```bash
+sudo a2ensite centro.intranet.conf
+sudo a2ensite departamentos.centro.intranet.conf
+```
+
+Y reiniciamos Apache con <code>sudo systemctl restart apache2</code>
 
 
 
