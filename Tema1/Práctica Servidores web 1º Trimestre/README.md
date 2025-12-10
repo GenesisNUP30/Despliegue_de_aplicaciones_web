@@ -60,7 +60,7 @@ sudo mkdir -p /var/www/centro.intranet
 sudo mkdir -p /var/www/departamentos.centro.intranet
 ```
 
-![Imagen 2](/recursos/tema1/practica/3.png)
+![Imagen 3](/recursos/tema1/practica/3.png)
 
 
 ### 3.1. Configurar VirtualHost en Apache
@@ -81,6 +81,9 @@ Y dentro del archivio ponemos este contenido:
     </Directory>
 </VirtualHost>
 ```
+Este sitio servirá el contenido en WordPress. 
+
+![Imagen 4](/recursos/tema1/practica/4.png)
 
 Y para el otro sitio hacemos lo mismo:
 ```bash
@@ -101,6 +104,12 @@ Y dentro de este fichero ponemos:
 </VirtualHost>
 ```
 
+![Imagen 5](/recursos/tema1/practica/5.png)
+
+Este servidor se ejecutará con una aplicación en Python, por eso usamos WSGI para permitir la ejecución de aplicaciones Python. 
+Más adelante terminaremos de hacer la configuración para este sitio. 
+
+
 Por último, habilitamos los sitios que hemos creado con
 ```bash
 sudo a2ensite centro.intranet.conf
@@ -109,7 +118,31 @@ sudo a2ensite departamentos.centro.intranet.conf
 
 Y reiniciamos Apache con <code>sudo systemctl restart apache2</code>
 
+### 3.2 Instalar y configurar Wordpress para el sitio centro.intranet
 
+1) Tenemos que descargar Wordpress:
+   Entramos a la carpeta temp con <code> cd /temp </code>
+   Una vez dentro ejecutamos los siguientes comandos:
+   ```bash
+   wget https://wordpress.org/latest.tar.gz
+   tar -xzf latest.tar.gz
+   ```
+
+   Luego descomprimimos el contenido de la carpeta de la descarga en el directorio del sitio con
+   ```bash
+   sudo cp -r wordpress/* /var/www/centro.intranet/
+   sudo chown -R www-www-data /var/www/centro.intranet/
+   ```
+
+2) Creamos la base de datos para WordPress:
+   Para eso entramos a mysql con <code> sudo mysql </code>
+   Dentro ejecutamos el siguiente comando:
+   ```bash
+   CREATE DATABASE wordpress;
+   CREATE USER 'centrointranet'@'localhost' IDENTIFIED BY 'genesis';
+   GRANT ALL PRIVILEGES ON wordpress.* TO 'centrointranet'@'localhost';
+   FLUSH PRIVILEGES;
+   ```
 
 ### 4. Activar el módulo “wsgi” para permitir la ejecución de aplicaciones Python
 
