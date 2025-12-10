@@ -52,18 +52,18 @@ sudo systemctl status apache2
 ![Imagen 2](/recursos/tema1/practica/2.png)
 
 
+### 3. Configurar el sitio centro.intranet
 
-### 3. Crear directorios para los dominios
-Tenemos que crear los directorios para los 2 sitios con
+### 3.1 Crear el directorio para el sitio
+Hay que crear una carpeta en /var/www/ y para eso hacemos: 
 ```bash
 sudo mkdir -p /var/www/centro.intranet
-sudo mkdir -p /var/www/departamentos.centro.intranet
 ```
 
-![Imagen 3](/recursos/tema1/practica/3.png)
+![Imagen 3_1](/recursos/tema1/practica/3_1.png)
 
 
-### 3.1. Configurar VirtualHost en Apache
+#### 3.2. Configurar VirtualHost en Apache
 Para configurar centro.intranet:
 ```bash
 sudo nano /etc/apache2/sites-available/centro.intranet.conf
@@ -83,66 +83,51 @@ Y dentro del archivio ponemos este contenido:
 ```
 Este sitio servirá el contenido en WordPress. 
 
-![Imagen 4](/recursos/tema1/practica/4.png)
+![Imagen 3_2](/recursos/tema1/practica/3_2.png)
 
-Y para el otro sitio hacemos lo mismo:
-```bash
-sudo nano /etc/apache2/sites-available/departamentos.centro.intranet.conf
-```
-
-Y dentro de este fichero ponemos:
-```bash
-<VirtualHost *:80>
-    ServerName departamentos.centro.intranet
-    DocumentRoot /var/www/departamentos.centro.intranet
-
-    WSGIScriptAlias / /var/www/departamentos.centro.intranet/app.wsgi
-
-    <Directory /var/www/departamentos.centro.intranet>
-        Require all granted
-    </Directory>
-</VirtualHost>
-```
-
-![Imagen 5](/recursos/tema1/practica/5.png)
-
-Este servidor se ejecutará con una aplicación en Python, por eso usamos WSGI para permitir la ejecución de aplicaciones Python. 
-Más adelante terminaremos de hacer la configuración para este sitio. 
-
-
-Por último, habilitamos los sitios que hemos creado con
+#### 3.3 Habilitar el sitio
+Para que el sitio funcione tenemos que habilitarlo con: 
 ```bash
 sudo a2ensite centro.intranet.conf
-sudo a2ensite departamentos.centro.intranet.conf
 ```
 
-Y reiniciamos Apache con <code>sudo systemctl restart apache2</code>
+Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
 
-### 3.2 Instalar y configurar Wordpress para el sitio centro.intranet
+![Imagen 3_3](/recursos/tema1/practica/3_3.png)
+
+#### 3.4 Instalar y configurar Wordpress 
 
 1) Tenemos que descargar Wordpress:
-   Entramos a la carpeta temp con <code> cd /temp </code>
-   Una vez dentro ejecutamos los siguientes comandos:
+   Entramos a la carpeta temp con <code> cd /tmp </code>
+   Una vez dentro ejecutamos los siguientes comandos para descargar y descomprimir:
    ```bash
    wget https://wordpress.org/latest.tar.gz
    tar -xzf latest.tar.gz
    ```
-
-   Luego descomprimimos el contenido de la carpeta de la descarga en el directorio del sitio con
+   
+   ![Imagen 3_4](/recursos/tema1/practica/3_4.png)
+   
+   Luego movemos el contenido de la carpeta descomprimida en el directorio del sitio con
    ```bash
-   sudo cp -r wordpress/* /var/www/centro.intranet/
-   sudo chown -R www-www-data /var/www/centro.intranet/
+   sudo mv wordpress /var/www/centro.intranet
    ```
 
 2) Creamos la base de datos para WordPress:
    Para eso entramos a mysql con <code> sudo mysql </code>
-   Dentro ejecutamos el siguiente comando:
+   Dentro ejecutamos los siguientes comandos:
    ```bash
    CREATE DATABASE wordpress;
    CREATE USER 'centrointranet'@'localhost' IDENTIFIED BY 'genesis';
    GRANT ALL PRIVILEGES ON wordpress.* TO 'centrointranet'@'localhost';
    FLUSH PRIVILEGES;
    ```
+
+   ![Imagen 3_5](/recursos/tema1/practica/3_5.png)
+   
+3) Configuramos Wordpress
+   Para eso abrimos el navegador y entramos en http://centro.intranet donde nos encontraremos la carpeta de wordpress.
+   Entramos a la capeta y ya podemos configurar WordPress
+   
 
 ### 4. Activar el módulo “wsgi” para permitir la ejecución de aplicaciones Python
 
