@@ -124,7 +124,8 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
 
    ![Imagen 3_5](/recursos/tema1/practica/3_5.png)
    
-3) Configuramos Wordpress
+3) Configurar el archivo wp-config.php de WordPress
+   Este archivo contiene los detalles de configuración base para WordPress, incluida la conexión a la base de datos. 
    Para eso abrimos el navegador y entramos en http://centro.intranet donde nos encontraremos la carpeta de wordpress.
    Entramos a la capeta y ya podemos configurar WordPress
    
