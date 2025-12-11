@@ -95,9 +95,9 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
 
 ![Imagen 3_3](/recursos/tema1/practica/3_3.png)
 
-#### 3.4 Instalar y configurar Wordpress 
+#### 3.4 Descargar WordPress y configurar el archivo de configuración
 
-1) Tenemos que descargar Wordpress:
+1) Descargar Wordpress:
    Entramos a la carpeta temp con <code> cd /tmp </code>
    Una vez dentro ejecutamos los siguientes comandos para descargar y descomprimir:
    ```bash
@@ -112,22 +112,62 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
    sudo mv wordpress /var/www/centro.intranet
    ```
 
-2) Creamos la base de datos para WordPress:
+2) Crear la base de datos para WordPress:
    Para eso entramos a mysql con <code> sudo mysql </code>
    Dentro ejecutamos los siguientes comandos:
    ```bash
    CREATE DATABASE wordpress;
-   CREATE USER 'centrointranet'@'localhost' IDENTIFIED BY 'genesis';
-   GRANT ALL PRIVILEGES ON wordpress.* TO 'centrointranet'@'localhost';
+   CREATE USER 'wordpress'@'localhost' IDENTIFIED BY 'wordpress';
+   GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost';
    FLUSH PRIVILEGES;
+   EXIT;
    ```
 
    ![Imagen 3_5](/recursos/tema1/practica/3_5.png)
    
 3) Configurar el archivo wp-config.php de WordPress
-   Este archivo contiene los detalles de configuración base para WordPress, incluida la conexión a la base de datos. 
-   Para eso abrimos el navegador y entramos en http://centro.intranet donde nos encontraremos la carpeta de wordpress.
-   Entramos a la capeta y ya podemos configurar WordPress
+   Este archivo contiene los detalles de configuración base para WordPress, incluida la conexión a la base de datos. Para editarlo tenemos que ejecutar los siguientes comandos:
+   
+   ```bash
+   cd /var/www/centro.intranet
+   sudo cp wp-config-sample.php wp-config.php
+   sudo nano wp-config.php
+   ```
+   
+   Configuramos el archivo con los datos que configuramos en mysql: la base de datos, el usuario, contraseña, etc, tal y como vemos en la imagen. 
+   
+   ![Imagen 3_6](/recursos/tema1/practica/3_6.png)
+
+   Ahora tenemos que añadir claves de seguridad ya que WordPress necesita unas claves 'salts'. Para generarlas abrimos otra terminal y ejecutamos:
+   ```bash
+   curl -s https://api.wordpress.org/secret-key/1.1/salt/
+   ```
+   
+   ![Imagen 3_7](/recursos/tema1/practica/3_7.png)
+
+   Copiamos todas las líneas que salgan, buscamos en el archivo wp-config.php la sección que dice define( 'AUTH_KEY', '...' ); y las líneas siguientes y la sustituimos por las líneas generadas.
+
+   ![Imagen 3_8](/recursos/tema1/practica/3_8.png)
+
+4) Configurar los permisos correctos
+   Ejecutamos estos comandos: 
+   ```bash
+   sudo chown -R www-data:www-data /var/www/centro.intranet
+   sudo chmod -R u=rwX,go=rX /var/www/centro.intranet
+   ```
+   
+   ![Imagen 3_9](/recursos/tema1/practica/3_9.png)
+   
+   - u=rwX → el propietario (www-data) tiene lectura, escritura y ejecución (X solo en carpetas)
+   - go=rX → grupo y otros tienen lectura y ejecución (solo en carpetas)
+  
+5) Reiniciar apache
+
+
+#### 3.4 Terminar de instalar Wordpress 
+
+Abrimos el navegador y entramos en http://centro.intranet donde nos encontraremos la carpeta de wordpress.
+Entramos a la capeta y ya podemos continuar con la instalación
    
 
 ### 4. Activar el módulo “wsgi” para permitir la ejecución de aplicaciones Python
