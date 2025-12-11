@@ -28,7 +28,8 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Despliegue de
 |-----------|-------------|
 | [Ejercicio 1](./Tema1/Ejercicio1) | Instalación de Apache, MySQL y PHP en Ubuntu |
 | [Ejercicio 2](./Tema1/Ejercicio2) | Configuración básica de Apache |
-| ...       | ...         |
+| [Ejercicio 3](./Tema1/Ejercicio3) | Directiva Directory |
+| [Ejercicio 4](./Tema1/Ejercicio4) | Expresiones regulares |
 
 ---
 
