@@ -30,6 +30,7 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Despliegue de
 | [Ejercicio 2](./Tema1/Ejercicio2) | Configuración básica de Apache |
 | [Ejercicio 3](./Tema1/Ejercicio3) | Directiva Directory |
 | [Ejercicio 4](./Tema1/Ejercicio4) | Expresiones regulares |
+| [Práctica Servidores Web](./Tema1/Ejercicio4) | Expresiones regulares |
 
 ---
 
