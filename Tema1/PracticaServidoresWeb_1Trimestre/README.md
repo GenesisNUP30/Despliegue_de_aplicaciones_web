@@ -324,9 +324,103 @@ sudo systemctl restart apache2
 
 Abrimos el navegador y entramos en http://centro.intranet/cgi-bin/awstats.pl?config=centro.intranet para ver las estadísticas 
 
-### 7. Instala un segundo servidor de tu elección (nginx, lighttpd) bajo el dominio “servidor2.centro.intranet”. Debes configurarlo para que sirva en el puerto 8080 y haz los cambios necesarios para ejecutar php. Instala phpmyadmin.
+### 7. Instalar un segundo servidor(nginx, lighttpd) bajo el dominio “servidor2.centro.intranet” usando el puerto 8080 con php y phpmyadmin.
+
+#### 7.1 Instalar el servidor Nginx 
+En mi caso, usaré el servidor Nginx 
+```bash
+sudo apt install nginx
+```
+![Imagen 7_1](/recursos/tema1/practica/7_1.png)
+
+#### 7.2 Crear el directorio para el sitio
+Como ya hemos hecho anteriormente tenemos que crear un directorio en /var/www/
+```bash
+sudo mkdir -p /var/www/servidor2.centro.intranet
+```
+
+#### 7.3 Crear el archvivo de configuración para el sitio y configurarlo para que escuche por el puerto 8080
+```bash
+sudo nano /etc/nginx/sites-available/servidor2.centro.intranet
+```
+
+El contenido del archivo es el siguiente:
+```bash
+server {
+    listen 8080;
+    server_name servidor2.centro.intranet;
+
+    root /var/www/servidor2;
+
+    index index.php index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/var/run/php/php-fpm.sock;
+    }
+}
+```
+
+![Imagen 7_3](/recursos/tema1/practica/7_3.png)
+
+#### 7.4 Activar el sitio, dar permisos y reiniciar el servidor Nginx
+```bash
+sudo ln -s /etc/nginx/sites-available/servidor2 /etc/nginx/sites-enabled/
+sudo chown -R www-data:www-data /var/www/servidor2.centro.intranet
+sudo systemctl restart nginx
+```
+
+Al reiniciar el servidor Nginx me dió un error:
+
+![Imagen 7_4_1](/recursos/tema1/practica/7_4_1.png)
+
+Eso era porque en la carpeta /etc/nginx/sites-enabled/ hay un fichero de configuración llamado default. Este escucha también por el puerto 80, que era el error que me daba. 
+Lo que hice fue eliminarlo con <code> sudo rm /etc/nginx/sites-enabled </code> aunque también podemos comentar la línea Listen 80 del fichero. 
+
+![Imagen 7_4_2](/recursos/tema1/practica/7_4_2.png)
+
+Volvemos a reinciar el servidor y ya no nos sale error: 
+
+![Imagen 7_4_2](/recursos/tema1/practica/7_4_3.png)
 
 
+#### 7.5 Instalar PHP-FPM para Nginx
+```bash
+sudo apt install php-fpm 
+sudo systemctl restart php*-fpm
+```
+
+![Imagen 7_5_1](/recursos/tema1/practica/7_5_1.png)
+
+![Imagen 7_5_2](/recursos/tema1/practica/7_5_2.png)
 
 
+#### 7.6 Instalar phpmyadmin para Nginx
+```bash
+sudo apt install phpmyadmin
+```
+Cuando se nos abra una ventana donde nos pida seleccionar el servidor elegimos apache2. 
+
+A la hora de configurar o no la base de datos yo puse que no
+
+![Imagen 7_6](/recursos/tema1/practica/7_6.png)
+
+#### 7.7 Configurar phpmyadmin para Nginx y reiniciar el servidor
+```bash
+sudo ln -s /usr/share/phpmyadmin /var/www/servidor2/phpmyadmin
+sudo systemctl restart nginx
+```
+
+![Imagen 7_7](/recursos/tema1/practica/7_7.png)
+
+#### 7.8 Entrar a phpmyadmin
+En el navegador entramos en http://servidor2.centro.intranet:8080/phpmyadmin
+
+![Imagen 7_8](/recursos/tema1/practica/7_8.png)
+
+Como vemos entramos perfectamente
 
