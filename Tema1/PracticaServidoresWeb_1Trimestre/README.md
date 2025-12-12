@@ -63,7 +63,7 @@ sudo mkdir -p /var/www/centro.intranet
 ![Imagen 3_1](/recursos/tema1/practica/3_1.png)
 
 
-#### 3.2. Configurar VirtualHost en Apache
+#### 3.2 Configurar VirtualHost en Apache
 Para configurar centro.intranet:
 ```bash
 sudo nano /etc/apache2/sites-available/centro.intranet.conf
@@ -105,11 +105,11 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
    tar -xzf latest.tar.gz
    ```
    
-   ![Imagen 3_4](/recursos/tema1/practica/3_4.png)
+   ![Imagen 3_4_1](/recursos/tema1/practica/3_4_1.png)
    
    Luego movemos el contenido de la carpeta descomprimida en el directorio del sitio con
    ```bash
-   sudo mv wordpress /var/www/centro.intranet
+   sudo mv wordpress/* /var/www/centro.intranet
    ```
 
 2) Crear la base de datos para WordPress:
@@ -123,7 +123,7 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
    EXIT;
    ```
 
-   ![Imagen 3_5](/recursos/tema1/practica/3_5.png)
+   ![Imagen 3_4_2](/recursos/tema1/practica/3_4_2.png)
    
 3) Configurar el archivo wp-config.php de WordPress
    Este archivo contiene los detalles de configuración base para WordPress, incluida la conexión a la base de datos. Para editarlo tenemos que ejecutar los siguientes comandos:
@@ -136,18 +136,18 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
    
    Configuramos el archivo con los datos que configuramos en mysql: la base de datos, el usuario, contraseña, etc, tal y como vemos en la imagen. 
    
-   ![Imagen 3_6](/recursos/tema1/practica/3_6.png)
+   ![Imagen 3_4_3](/recursos/tema1/practica/3_4_3.png)
 
    Ahora tenemos que añadir claves de seguridad ya que WordPress necesita unas claves 'salts'. Para generarlas abrimos otra terminal y ejecutamos:
    ```bash
    curl -s https://api.wordpress.org/secret-key/1.1/salt/
    ```
    
-   ![Imagen 3_7](/recursos/tema1/practica/3_7.png)
+   ![Imagen 3_4_4](/recursos/tema1/practica/3_4_4.png)
 
    Copiamos todas las líneas que salgan, buscamos en el archivo wp-config.php la sección que dice define( 'AUTH_KEY', '...' ); y las líneas siguientes y la sustituimos por las líneas generadas.
 
-   ![Imagen 3_8](/recursos/tema1/practica/3_8.png)
+   ![Imagen 3_4_5](/recursos/tema1/practica/3_4_5.png)
 
 4) Configurar los permisos correctos
    Ejecutamos estos comandos: 
@@ -156,7 +156,7 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
    sudo chmod -R u=rwX,go=rX /var/www/centro.intranet
    ```
    
-   ![Imagen 3_9](/recursos/tema1/practica/3_9.png)
+   ![Imagen 3_4_6](/recursos/tema1/practica/3_4_6.png)
    
    - u=rwX → el propietario (www-data) tiene lectura, escritura y ejecución (X solo en carpetas)
    - go=rX → grupo y otros tienen lectura y ejecución (solo en carpetas)
@@ -164,14 +164,32 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
 5) Reiniciar apache
 
 
-#### 3.4 Terminar de instalar Wordpress 
+#### 3.5 Terminar de instalar Wordpress 
 
-Abrimos el navegador y entramos en http://centro.intranet donde nos encontraremos la carpeta de wordpress.
-Entramos a la capeta y ya podemos continuar con la instalación
+Abrimos el navegador y entramos en http://centro.intranet donde se nos abrirá WordPress par terminar de instalarlo. 
+![Imagen 3_5_1](/recursos/tema1/practica/3_5_1.png)
+
+Una vez instalado accedemos a la página web en http://centro.intranet y nos aparecerá la página web. 
+![Imagen 3_5_2](/recursos/tema1/practica/3_5_2.png)
    
 
-### 4. Activar el módulo “wsgi” para permitir la ejecución de aplicaciones Python
+### 4. Configurar el sitio departamentos.centro.intranet 
+### 4.1 Activar el módulo WSGI para Python
+Lo instalamos con 
+```bash
+sudo apt install libapache2-mod-wsgi-py3
+sudo systemctl restart apache2
+```
+![Imagen 4_1](/recursos/tema1/practica/4_1.png)
 
+
+### 4.2 Crear el directorio para el sitio
+Al igual que hicimos con el sitio centro.intranet tenemos que crear un directorio para este sitio
+```bash
+sudo mkdir -p /var/www/departamentos.centro.intranet
+```
+
+#### 4.3 Configurar VirtualHost en Apache
 
 
 
