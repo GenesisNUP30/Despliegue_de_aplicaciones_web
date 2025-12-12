@@ -153,13 +153,11 @@ Y reiniciamos Apache con <code>sudo systemctl reload apache2</code>
    Ejecutamos estos comandos: 
    ```bash
    sudo chown -R www-data:www-data /var/www/centro.intranet
-   sudo chmod -R u=rwX,go=rX /var/www/centro.intranet
+   sudo chmod 755 /var/www/
    ```
    
    ![Imagen 3_4_6](/recursos/tema1/practica/3_4_6.png)
-   
-   - u=rwX → el propietario (www-data) tiene lectura, escritura y ejecución (X solo en carpetas)
-   - go=rX → grupo y otros tienen lectura y ejecución (solo en carpetas)
+
   
 5) Reiniciar apache
 
@@ -174,7 +172,7 @@ Una vez instalado accedemos a la página web en http://centro.intranet y nos apa
    
 
 ### 4. Configurar el sitio departamentos.centro.intranet 
-### 4.1 Activar el módulo WSGI para Python
+#### 4.1 Activar el módulo WSGI para Python
 Lo instalamos con 
 ```bash
 sudo apt install libapache2-mod-wsgi-py3
@@ -183,21 +181,76 @@ sudo systemctl restart apache2
 ![Imagen 4_1](/recursos/tema1/practica/4_1.png)
 
 
-### 4.2 Crear el directorio para el sitio
+#### 4.2 Crear el directorio para el sitio
 Al igual que hicimos con el sitio centro.intranet tenemos que crear un directorio para este sitio
 ```bash
 sudo mkdir -p /var/www/departamentos.centro.intranet
 ```
 
 #### 4.3 Configurar VirtualHost en Apache
+Creamos el archivo de configuración del sitio con 
+```bash
+sudo nano /etc/apache2/sites-available/centro.intranet.conf
+```
+
+![Imagen 4_2](/recursos/tema1/practica/4_2.png)
+
+El contenido del archivo será el siguiente:
+```bash
+<VirtualHost *:80>
+    ServerName departamentos.centro.intranet
+    DocumentRoot /var/www/departamentos.centro.intranet
+
+    WSGIScriptAlias / /var/www/departamentos.centro.intranet/app.py
+
+    <Directory /var/www/departamentos.centro.intranet>
+        Require all granted
+    </Directory>
+</VirtualHost>
+```
+
+![Imagen 4_3](/recursos/tema1/practica/4_3.png)
 
 
+#### 4.4 Activar el módulo “wsgi” y crear el archivo .py para ejecutar el sitio en Python
+1) Crear el archivo app.py
+   ```bash
+   sudo nano /var/www/departamentos.centro.intranet/app.py
+   ```
+   ![Imagen 4_4_1](/recursos/tema1/practica/4_4_1.png)
+   
+2) Contenido del script
+   ```bash
+   def application(environ, start_response):
+    status = '200 OK'
+    output = b"Aplicación Python WSGI funcionando desde app.py"
 
+    headers = [('Content-Type', 'text/plain'),
+               ('Content-Length', str(len(output)))]
 
-### 5. Crea y despliega una pequeña aplicación python para comprobar que funciona correctamente.
+    start_response(status, headers)
+    return [output]
+   ```
 
+   ![Imagen 4_4_2](/recursos/tema1/practica/4_4_2.png)
 
+3) Activar el módulo wsgi, el sitio y asignar permisos necesarios
+   Ejecutamos los siguientes comandos
+   ```bash
+   sudo a2ensite departamentos.centro.intranet.conf
+   sudo a2enmod wsgi
+   sudo chown -R www-data:www-data /var/www/departamentos.centro.intranet.conf
+   sudo systemctl reload apache2
+   ```
 
+   ![Imagen 4_4_3](/recursos/tema1/practica/4_4_3.png)
+
+#### 4.5 Comprobar el funcionamiento del sitio 
+Abrimos el navegador y entramos en http://departamentos.centro.intranet. 
+
+![Imagen 4_5](/recursos/tema1/practica/4_5.png)
+
+Como vemos, podemos ver la página con el mensaje que configuramos en el script de python. 
 
 
 ### 6. Adicionalmente protegeremos el acceso a la aplicación python mediante autenticación
