@@ -287,9 +287,7 @@ sudo apt install awstats
 
 ![Imagen 6_1](/recursos/tema1/practica/6_1.png)
 
-Copiamos el archivo awstats.conf que viene por defecto en la carpeta awstats y le ponemos el nombre awstats.centro.intranet.conf
-
-Creamos un archivo de configuración awstats para el sitio centro.intranet
+Copiamos el archivo awstats.conf que viene por defecto en la carpeta awstats, le ponemos el nombre awstats.centro.intranet.conf y lo editamos
 ```bash
 sudo cp /etc/awstats/awstats.conf /etc/awstats/awstats.centro.intranet.conf
 sudo nano /etc/awstats/awstats.centro.intranet.conf
