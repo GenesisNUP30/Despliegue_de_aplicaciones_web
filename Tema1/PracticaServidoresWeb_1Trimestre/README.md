@@ -1,5 +1,5 @@
-# Práctica 1º Trimestre. Servidores Web
-## Instalar un servidor web interno para un instituto
+# 🖥️ Práctica 1º Trimestre – Servidores Web  
+## 🏫 Instalar un servidor web interno para un instituto
 
 
 ### 1. Crear 2 dominios mediante el archivo hosts: centro.intranet y departamentos.centro.intranet. 
