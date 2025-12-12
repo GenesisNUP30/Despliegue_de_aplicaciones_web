@@ -253,20 +253,80 @@ Abrimos el navegador y entramos en http://departamentos.centro.intranet.
 Como vemos, podemos ver la página con el mensaje que configuramos en el script de python. 
 
 
-### 6. Adicionalmente protegeremos el acceso a la aplicación python mediante autenticación
+### 5. Proteger el acceso a la aplicación python mediante autenticación
+Primero creamos el usuario con su contraseña
+```bash
+sudo htpasswd -c /etc/apache2/.htpasswd admin
+```
+
+![Imagen 5_1](/recursos/tema1/practica/5_1.png)
+
+A continuación editamos el archivo con la configuración VirtualHost departamentos.centro.intranet.conf (que creamos anteriormente).
+En la sección Directory agregamos las siguientes líneas:
+```bash
+AuthType Basic
+AuthName "Sitio protegido con Autenticacion"
+AuthUserFile /etc/apache2/.htpasswd
+Require valid-user
+```
+
+![Imagen 5_2](/recursos/tema1/practica/5_2.png)
+
+Reiniciamos el servidor con <code> sudo systemctl restar apache2 </code> para hacer efectivos los cambios.
+
+Ahora volvemos a entrar en la página y como vemos pide el usuario y la contraseña
+
+![Imagen 5_3](/recursos/tema1/practica/5_3.png)
 
 
+### 6. Instalar y configurar awstat.
+Empezamos instalando awstat con 
+```bash
+sudo apt install awstats
+```
+
+![Imagen 6_1](/recursos/tema1/practica/6_1.png)
+
+Copiamos el archivo awstats.conf que viene por defecto en la carpeta awstats y le ponemos el nombre awstats.centro.intranet.conf
+
+Creamos un archivo de configuración awstats para el sitio centro.intranet
+```bash
+sudo cp /etc/awstats/awstats.conf /etc/awstats/awstats.centro.intranet.conf
+sudo nano /etc/awstats/awstats.centro.intranet.conf
+```
+
+En el archivo cambiamos las siguientes líneas: 
+```bash
+LogFile="/var/log/apache2/access.log"
+SiteDomain="centro.intranet"
+HostAliases="localhost 127.0.0.1 www.centro.intranet" 
+```
+
+![Imagen 6_2](/recursos/tema1/practica/6_2.png)
+
+![Imagen 6_3](/recursos/tema1/practica/6_3.png)
+
+![Imagen 6_4](/recursos/tema1/practica/6_4.png)
 
 
+Ahora actualizamos las estadísticas:
+```bash
+sudo /usr/lib/cgi-bin/awstats.pl -config=centro.intranet -update
+```
 
-### 7. Instala y configura awstat.
+![Imagen 6_5](/recursos/tema1/practica/6_5.png)
 
+Habilitamos el CGI en Apache y reiniciamos el servidor
+```bash
+sudo a2enmod cgi
+sudo systemctl restart apache2
+```
 
+![Imagen 6_6](/recursos/tema1/practica/6_6.png)
 
+Abrimos el navegador y entramos en http://centro.intranet/cgi-bin/awstats.pl?config=centro.intranet para ver las estadísticas 
 
-
-
-### 8. Instala un segundo servidor de tu elección (nginx, lighttpd) bajo el dominio “servidor2.centro.intranet”. Debes configurarlo para que sirva en el puerto 8080 y haz los cambios necesarios para ejecutar php. Instala phpmyadmin.
+### 7. Instala un segundo servidor de tu elección (nginx, lighttpd) bajo el dominio “servidor2.centro.intranet”. Debes configurarlo para que sirva en el puerto 8080 y haz los cambios necesarios para ejecutar php. Instala phpmyadmin.
 
 
 
