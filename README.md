@@ -34,10 +34,10 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Despliegue de
 
 ---
 
-## Tema 2 - Despliegue de aplicaciones
+## Tema 2 - DNS
 
 | Ejercicio | Descripción |
 |-----------|-------------|
-| [Ejercicio 1](./Tema2/Ejercicio1) | Breve descripción 2.1 |
-| [Ejercicio 2](./Tema2/Ejercicio2) | Breve descripción 2.2 |
+| [Práctica 2º Trimestre](./Tema2/Practica_2Trimestre) | Instalación, configuración y puesta en marcha de un servidor que ofrezca servicio de alojamiento web configurable |
+| [Ejercicio 2](./Tema2/Ejercicio2) |  |
 | ...       | ...         |
