@@ -43,6 +43,11 @@ Para ello seguiremos los siguientes pasos:
      
      ![Imagen 2_3](/recursos/tema2/practica_2trimestre/2_3png)
 
-   - 
+   - Creamos un par de claves para la instancia y el asignamos un nombre. Es muy importante no perderlas pues la usaremos para poder iniciar la conexión SSH
 
+     ![Imagen 2_4](/recursos/tema2/practica_2trimestre/2_4png)
+
+     Cuando se genere la descarguemos con extensión .pem y la guardamos en un lugar seguro.
+
+   - 
 
