@@ -100,8 +100,8 @@ Si queremos conectarnos desde nuestro equipo lo hacemos de la siguiente manera:
    
    ![Imagen 1_9](/recursos/tema2/practica_2trimestre/1_9.png)
 
-   Si nos da problemas de permisos con la clave, es porque tenemos que asignarle solo lectura para el propietario.
-   Para ello, abrimos PowerShell y ejecutamos los siguientes comandos:
+   Si nos da problemas de permisos con la clave es porque tenemos que asignarle solo lectura para el propietario.
+   Para ello, abrimos PowerShell. nos dirigimos al directorio donde se encuentra nuestra clave y ejecutamos los siguientes comandos:
    ```bash
    # Quita permisos heredados y da solo lectura al usuario actual
    icacls.exe "tu_clave.pem" /reset
