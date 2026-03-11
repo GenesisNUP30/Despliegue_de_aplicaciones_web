@@ -123,9 +123,51 @@ Recuerda que todos los comandos tienen que empezar por sudo, para poder tener pr
 
 ![Imagen 2_1](/recursos/tema2/practica_2trimestre/2_1.png)
 
-Empezamos instalando el servidor web (apache y php)
+#### Servidor web (apache y php)
+```bash
+sudo apt install apache2 php libapache2-mod-php php-mysql -y
+```
 
 ![Imagen 2_2](/recursos/tema2/practica_2trimestre/2_2.png)
+
+Para comprobar su funcionamiento accedemos a la IP del servidor desde nuestro navegador:
+
+![Imagen 2_3](/recursos/tema2/practica_2trimestre/2_3.png)
+
+#### Servidor mysql
+
+```bash
+sudo apt mysql-server -y
+```
+
+![Imagen 2_4](/recursos/tema2/practica_2trimestre/2_4.png)
+
+#### Instalar phpMyAdmin
+
+```bash
+sudo apt install phpmyadmin -y
+```
+En la pantalla que nos salta a continuación nos pregutan sobre el servidor web que queremos elegir. Como nosotros hemos instalado apache, marcamos apache2 (lo seleccionamos pulsando la tecla Espacio). Para dar OK nos movemos con Tab
+
+![Imagen 2_5](/recursos/tema2/practica_2trimestre/2_5.png)
+
+Luego nos preguntarán si queremos configurar la base de datos así que nosotros hacemos Intro en yes.
+
+![Imagen 2_6](/recursos/tema2/practica_2trimestre/2_6.png)
+
+Nos pedirá una contraseña para entrar a la administración de phpmyadmin así que la introducimos
+
+![Imagen 2_7](/recursos/tema2/practica_2trimestre/2_7.png)
+
+Tendremos que confirmarla
+
+Para verificar que se ha instalado correctamente accedemos a la dirección http://IP-publica/phpmyadmin
+El usuario es phpmyadmin
+
+![Imagen 2_8](/recursos/tema2/practica_2trimestre/2_8.png)
+
+
+
 
 
 
