@@ -166,7 +166,7 @@ El usuario es phpmyadmin
 
 ![Imagen 2_8](/recursos/tema2/practica_2trimestre/2_8.png)
 
-
+#### Instalar FTP con TLS
 
 
 
