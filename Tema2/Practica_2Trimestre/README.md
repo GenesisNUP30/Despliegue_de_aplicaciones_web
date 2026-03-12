@@ -161,12 +161,22 @@ Nos pedirá una contraseña para entrar a la administración de phpmyadmin así 
 
 Tendremos que confirmarla
 
-Para verificar que se ha instalado correctamente accedemos a la dirección http://IP-publica/phpmyadmin
+Para verificar que se ha instalado correctamente accedemos a la dirección http://IP-publica/phpmyadmin. 
 El usuario es phpmyadmin
 
 ![Imagen 2_8](/recursos/tema2/practica_2trimestre/2_8.png)
 
-#### Instalar FTP con TLS
+#### Instalar FTP para la administración de archivos configurando TLS
+```bash
+sudo apt install vsftpd
+```
+
+Una vez instalado, editamos el archivo de configuración: 
+```bash
+sudo nano /etc/vsftpd.conf
+```
+
+
 
 
 
