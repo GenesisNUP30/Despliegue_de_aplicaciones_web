@@ -30,10 +30,13 @@ Recuerda que todos los comandos tienen que empezar por sudo, para poder tener pr
 
 ![Imagen 1_1](/recursos/tema2/practica_2trimestre/1_1.png)
 
-#### Servidor web (apache y php)
+#### Servidor web Apache
+Si no lo tenemos instalado lo hacemos con este comando: 
 ```bash
-sudo apt install apache2 php libapache2-mod-php php-mysql -y
+sudo apt-get install apache2
 ```
+
+En mi caso, ya estaba instalado
 
 ![Imagen 1_2](/recursos/tema2/practica_2trimestre/1_2.png)
 
@@ -42,12 +45,33 @@ Para comprobar su funcionamiento accedemos a la IP del servidor desde nuestro na
 ![Imagen 1_3](/recursos/tema2/practica_2trimestre/1_3.png)
 
 #### Servidor mysql
+Seguimos instalando mysql 
 
 ```bash
 sudo apt mysql-server -y
 ```
 
 ![Imagen 1_4](/recursos/tema2/practica_2trimestre/1_4.png)
+
+#### Instalar PHP
+PHP interpreta el código de nuestra aplicación, lo que le permite mostrarse en el navegador.
+
+```bash
+sudo apt install php libapache2-mod-php php-mcrypt php-mysql php-cgi php-curl php-json
+```
+
+![Imagen 1_5](/recursos/tema2/practica_2trimestre/1_5.png)
+
+Para comprobar que PHP funciona correctamente ejecutamos el siguiente comando
+
+```bash
+echo "<?php phpinfo(); ?>" | sudo tee /var/www/html/info.php
+```
+
+Con esto creamos un archivo de prueba que nos muestra la versión de PHP. Para verlo abrimos el navegador y accedemos a nuestra IP más el nombre del archivo: 
+http://127.0.0.1/info.php
+
+![Imagen 1_6](/recursos/tema2/practica_2trimestre/1_6.png)
 
 #### Instalar phpMyAdmin
 
