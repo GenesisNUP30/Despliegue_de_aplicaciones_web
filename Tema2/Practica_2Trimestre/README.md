@@ -78,17 +78,17 @@ http://127.0.0.1/info.php
 ```bash
 sudo apt install phpmyadmin -y
 ```
-En la pantalla que nos salta a continuación nos pregutan sobre el servidor web que queremos elegir. Como nosotros hemos instalado apache, marcamos apache2 (lo seleccionamos pulsando la tecla Espacio). Para dar OK nos movemos con Tab
+En la pantalla que nos salta a continuación nos preguntan sobre el servidor web que queremos elegir. Como nosotros hemos instalado apache, marcamos apache2 (lo seleccionamos pulsando la tecla Espacio). Para dar Aceptar nos movemos con Tab
 
-![Imagen 1_5](/recursos/tema2/practica_2trimestre/1_5.png)
+![Imagen 1_5](/recursos/tema2/practica_2trimestre/1_7.png)
 
-Luego nos preguntarán si queremos configurar la base de datos así que nosotros hacemos Intro en yes.
+Luego nos preguntarán si queremos configurar la base de datos así que nosotros hacemos Intro en Sí.
 
-![Imagen 1_6](/recursos/tema2/practica_2trimestre/1_6.png)
+![Imagen 1_6](/recursos/tema2/practica_2trimestre/1_7_1.png)
 
 Nos pedirá una contraseña para entrar a la administración de phpmyadmin así que la introducimos
 
-![Imagen 1_7](/recursos/tema2/practica_2trimestre/1_7.png)
+![Imagen 1_7](/recursos/tema2/practica_2trimestre/1_7_2.png)
 
 Tendremos que confirmarla
 
