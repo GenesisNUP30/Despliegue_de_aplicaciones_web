@@ -18,6 +18,8 @@ Se dará alojamiento a páginas web tanto estáticas como dinámicas con “php�
 Adicionalmente se podrá incluir:
 - Creación mediante mediante Docker de un contenedor DNS y al menos un contenedor que actuará como servidor (web, mysql, ssh,...) Se configurará la red, volúmenes y scripts necesarios para ponerlos en marcha. Este apartado se valorará con hasta el 10% de la nota de la práctica.
 
+Para esta práctica haremos uso de una máquina con Ubuntu 24 pero se puede realizar perfectamente en Ubuntu Server 24 o en una instancia de AWS. 
+
 ### 1. Instalación de servicios
 Antes que nada, actualizamos el sistema con los siguientes comandos:
 ```bash
