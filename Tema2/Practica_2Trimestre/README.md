@@ -23,8 +23,7 @@ Para esta práctica haremos uso de una máquina con Ubuntu 24 pero se puede real
 ### 1. Instalación de servicios
 Antes que nada, actualizamos el sistema con los siguientes comandos:
 ```bash
-sudo apt update
-sudo apt upgrade -y
+sudo apt update && sudo apt upgrade -y
 ```
 
 Recuerda que todos los comandos tienen que empezar por sudo, para poder tener privilegios de administrador y porder ejecutarlos. 
