@@ -136,8 +136,21 @@ Editamos el archivo de configuración:
 sudo nano /etc/vsftpd.conf
 ```
 
+Y ponemos estas líneas o las descomentamos:
+```bash
+write_enable=YES
+local_enable=YES
+chroot_local_user=YES
+ssl_enable=YES
+allow_writeable_chroot=YES
+```
 
+![Imagen 1_10_2](/recursos/tema2/practica_2trimestre/1_10_2.png)
 
+- local_enable: permite que los usuarios que tienen una cuenta real en el sistema Linux
+- write_enable: habilita los comandos de escritura como subir archivos, crear carpetas o borrar archivos.
+- chroot_local_user: controla que el usuario solo navegue en su propio directorio personal.
+- ssl_enable: activa el soporte para cifrado TLS/SSL
 
 
 
