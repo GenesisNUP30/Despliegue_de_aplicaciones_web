@@ -130,13 +130,15 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/privat
 
 ![Imagen 1_10_1](/recursos/tema2/practica_2trimestre/1_10_1.png)
 
-Al ejecutarlo nos pedirán unos datos que podemos dejar en blanco menos el Common Name donde tenemos que poner la IP de nuestro servidor 
-
-
-ditamos el archivo de configuración: 
+Al ejecutarlo nos pedirán unos datos que podemos dejar en blanco menos el Common Name donde tenemos que poner la IP de nuestro servidor. 
+Editamos el archivo de configuración: 
 ```bash
 sudo nano /etc/vsftpd.conf
 ```
+
+
+
+
 
 
 
