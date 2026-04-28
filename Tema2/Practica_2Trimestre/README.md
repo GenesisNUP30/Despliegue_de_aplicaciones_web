@@ -86,23 +86,54 @@ Luego nos preguntarán si queremos configurar la base de datos así que nosotros
 
 ![Imagen 1_6](/recursos/tema2/practica_2trimestre/1_7_1.png)
 
-Nos pedirá una contraseña para entrar a la administración de phpmyadmin así que la introducimos
+Nos pedirá una contraseña para entrar a la administración de phpmyadmin así que la introducimos. Luego tendremos que confirmarla. 
 
 ![Imagen 1_7](/recursos/tema2/practica_2trimestre/1_7_2.png)
-
-Tendremos que confirmarla
 
 Para verificar que se ha instalado correctamente accedemos a la dirección http://IP-publica/phpmyadmin. 
 El usuario es phpmyadmin
 
 ![Imagen 1_8](/recursos/tema2/practica_2trimestre/1_8.png)
 
+#### Habilitar SSH
+
+```bash
+sudo apt install openssh-server
+```
+
+![Imagen 1_9](/recursos/tema2/practica_2trimestre/1_9.png)
+
+Una vez instalado activamos el servicio con 
+
+```bash
+sudo systemctl start ssh
+```
+
+Y verificamos su estado activo con 
+```bash
+sudo systemctl status ssh
+```
+
+![Imagen 1_9_1](/recursos/tema2/practica_2trimestre/1_9_1.png)
+
 #### Instalar FTP para la administración de archivos configurando TLS
 ```bash
 sudo apt install vsftpd
 ```
 
-Una vez instalado, editamos el archivo de configuración: 
+![Imagen 1_10](/recursos/tema2/practica_2trimestre/1_10.png)
+
+Ahora generamos un certificado para cifrar la conexión y la transferencia de archivos. 
+```bash
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+```
+
+![Imagen 1_10_1](/recursos/tema2/practica_2trimestre/1_10_1.png)
+
+Al ejecutarlo nos pedirán unos datos que podemos dejar en blanco menos el Common Name donde tenemos que poner la IP de nuestro servidor 
+
+
+ditamos el archivo de configuración: 
 ```bash
 sudo nano /etc/vsftpd.conf
 ```
