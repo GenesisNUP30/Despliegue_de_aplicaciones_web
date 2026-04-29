@@ -30,7 +30,7 @@ Recuerda que todos los comandos tienen que empezar por sudo, para poder tener pr
 
 ![Imagen 1_1](/recursos/tema2/practica_2trimestre/1_1.png)
 
-#### Servidor web Apache
+#### 1.1 Servidor web Apache
 Si no lo tenemos instalado lo hacemos con este comando: 
 ```bash
 sudo apt-get install apache2
@@ -44,7 +44,7 @@ Para comprobar su funcionamiento accedemos a la IP del servidor desde nuestro na
 
 ![Imagen 1_3](/recursos/tema2/practica_2trimestre/1_3.png)
 
-#### Servidor mysql
+#### 1.2 Servidor mysql
 Seguimos instalando mysql 
 
 ```bash
@@ -53,7 +53,7 @@ sudo apt mysql-server -y
 
 ![Imagen 1_4](/recursos/tema2/practica_2trimestre/1_4.png)
 
-#### Instalar PHP
+#### 1.3 Instalar PHP
 PHP interpreta el código de nuestra aplicación, lo que le permite mostrarse en el navegador.
 
 ```bash
@@ -73,7 +73,7 @@ http://127.0.0.1/info.php
 
 ![Imagen 1_6](/recursos/tema2/practica_2trimestre/1_6.png)
 
-#### Instalar phpMyAdmin
+#### 1.4 Instalar phpMyAdmin
 
 ```bash
 sudo apt install phpmyadmin -y
@@ -95,7 +95,7 @@ El usuario es phpmyadmin
 
 ![Imagen 1_8](/recursos/tema2/practica_2trimestre/1_8.png)
 
-#### Habilitar SSH
+#### 1.5 Habilitar SSH
 
 ```bash
 sudo apt install openssh-server
@@ -116,7 +116,7 @@ sudo systemctl status ssh
 
 ![Imagen 1_9_1](/recursos/tema2/practica_2trimestre/1_9_1.png)
 
-#### Instalar FTP para la administración de archivos configurando TLS
+#### 1.6 Instalar FTP para la administración de archivos configurando TLS
 ```bash
 sudo apt install vsftpd
 ```
@@ -157,8 +157,58 @@ Por último reinciamos el servicio con
 sudo systemctl restart vsftpd
 ```
 
+### 2. Configuración de DNS con las resoluciones directa e inversa
+Tenemos que tener creado el archivo para zonas DNS antes de realizar el script. Para este apartado usaré la IP 127.0.0.1. 
+
+Para ello primero instalamos Bind9 con 
+```bash
+sudo apt install bind9 -y
+```
+![Imagen 2_1](/recursos/tema2/practica_2trimestre/2_1.png)
+
+Ahora editamos el archivo named.conf.local
+```bash
+sudo nano /etc/bind/named.conf.local
+```
+
+Y añadimos las dos zonas:
+```bash
+zone "ejemplo.local" {
+    type master;
+    file "/etc/bind/db.ejemplo.local";
+};
+
+zone "0.0.127.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.127";
+};
+```
+![Imagen 2_2](/recursos/tema2/practica_2trimestre/2_2.png)
+
+Ahora creamos el archivo donde vinculamos los nombres de dominio a una ip en este caso a 127.0.0.1. 
+Primeros hacemos la zona directa (NOMBRE -> IP)
+```bash
+sudo nano /etc/bind/db.ejemplo.com
+```
+
+Y le ponemos esta configuración:
+
+![Imagen 2_3](/recursos/tema2/practica_2trimestre/2_3.png)
 
 
+Ahora creamos el archivo de la zona indirecta (IP → nombre):
+```bash
+sudo nano /etc/bind/db.127
+```
+
+Y lo configuramos así:
+
+![Imagen 2_4](/recursos/tema2/practica_2trimestre/2_4.png)
+
+Después de realizar todas estas configuraciones reinciamos el servicio DNS
+```bash
+sudo systemctl restart bind9
+```
 
 
 
