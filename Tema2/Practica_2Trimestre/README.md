@@ -205,11 +205,217 @@ Y lo configuramos así:
 
 ![Imagen 2_4](/recursos/tema2/practica_2trimestre/2_4.png)
 
+Por último nos aseguramos de usar nuestro DNS
+```bash
+sudo nano /etc/resolv.conf
+```
+
+Y editando así la línea: nameserver 127.0.0.1
+
 Después de realizar todas estas configuraciones reinciamos el servicio DNS
 ```bash
 sudo systemctl restart bind9
 ```
 
+### 3. Soporte Python en Apache
+Para instalar Python hacemos
+```bash
+sudo apt install libapache2-mod-wsgi-py3 python3 -y
+```
 
+![Imagen 3_1](/recursos/tema2/practica_2trimestre/3_1.png)
 
+Ahora habilitamos el módulo wgsi con
+```bash
+sudo a2enmod wsgi
+```
+Y reinciamos el servicio Apache
+```bash
+sudo systemctl restart apache2
+```
 
+### 4. Automatización con script
+Ahora crearemos un script con
+```bash
+sudo nano crear_cliente.sh
+```
+Este script realizará las siguientes tareas:
+- La creación de usuarios y del directorio correspondiente para el alojamiento web
+- Host virtual en apache
+- Creación de usuario del sistema para acceso a ftp, ssh, smtp, …
+- Se creará un subdominio en el servidor DNS con las resolución directa e inversa
+- Se creará una base de datos además de un usuario con todos los permisos sobre dicha base de datos (ALL PRIVILEGES)
+- Se habilitará la ejecución de aplicaciones Python con el servidor web 
+
+El contenido de este archivo será el siguiente: 
+```bash
+#!/bin/bash
+
+# =========================================
+# USO: ./crear_cliente.sh usuario [IP]
+# =========================================
+
+if [ $# -lt 1 ]; then
+    echo "Uso: $0 usuario [IP]"
+    exit 1
+fi
+
+# =========================================
+# VARIABLES
+# =========================================
+
+USUARIO=$1
+IP=${2:-127.0.0.1}   # si no se pasa IP usa localhost
+DOMINIO="ejemplo.com"
+
+SUBDOMINIO="${USUARIO}.${DOMINIO}"
+WEB_DIR="/var/www/html/${USUARIO}"
+
+ZONA_DIRECTA="/etc/bind/db.ejemplo.com"
+ZONA_INVERSA="/etc/bind/db.127"
+
+APACHE_CONF="/etc/apache2/sites-available/${USUARIO}.conf"
+
+DB_NAME="${USUARIO}_db"
+DB_USER="${USUARIO}"
+DB_PASS=$(openssl rand -base64 10)
+
+# =========================================
+# 1. CREAR USUARIO DEL SISTEMA
+# =========================================
+
+echo "Creando usuario del sistema..."
+
+if id "$USUARIO" &>/dev/null; then
+    echo "❌ El usuario ya existe"
+    exit 1
+fi
+
+sudo adduser --disabled-password --gecos "" $USUARIO
+
+# =========================================
+# 2. DIRECTORIO WEB
+# =========================================
+
+echo "Creando directorio web..."
+
+sudo mkdir -p $WEB_DIR
+sudo chown -R $USUARIO:$USUARIO $WEB_DIR
+sudo chmod 755 $WEB_DIR
+
+echo "<h1>Bienvenido $USUARIO</h1>" | sudo tee $WEB_DIR/index.html > /dev/null
+
+# =========================================
+# 3. DNS - ZONA DIRECTA
+# =========================================
+
+echo "Configurando DNS directo..."
+
+if ! grep -q "^$USUARIO" $ZONA_DIRECTA; then
+    echo "$USUARIO    IN  A   $IP" | sudo tee -a $ZONA_DIRECTA > /dev/null
+fi
+
+# =========================================
+# 4. DNS - ZONA INVERSA
+# =========================================
+
+echo "Configurando DNS inverso..."
+
+# Eliminamos PTR antiguos (evita duplicados)
+sudo sed -i "/IN PTR/d" $ZONA_INVERSA
+
+echo "1    IN PTR $SUBDOMINIO." | sudo tee -a $ZONA_INVERSA > /dev/null
+
+# =========================================
+# 5. VIRTUALHOST APACHE
+# =========================================
+
+echo "Creando VirtualHost..."
+
+sudo bash -c "cat > $APACHE_CONF" <<EOF
+<VirtualHost *:80>
+    ServerName $SUBDOMINIO
+    DocumentRoot $WEB_DIR
+
+    <Directory $WEB_DIR>
+        Require all granted
+        AllowOverride All
+    </Directory>
+
+    # Python WSGI
+    WSGIScriptAlias /app $WEB_DIR/app.wsgi
+
+    ErrorLog \${APACHE_LOG_DIR}/${USUARIO}_error.log
+    CustomLog \${APACHE_LOG_DIR}/${USUARIO}_access.log combined
+</VirtualHost>
+EOF
+
+sudo a2ensite ${USUARIO}.conf > /dev/null
+
+# =========================================
+# 6. PYTHON (WSGI)
+# =========================================
+
+echo "Configurando aplicación Python..."
+
+cat <<EOF | sudo tee $WEB_DIR/app.wsgi > /dev/null
+def application(environ, start_response):
+    start_response('200 OK', [('Content-Type', 'text/html')])
+    return [b"<h1>Python funcionando para $USUARIO</h1>"]
+EOF
+
+sudo chown $USUARIO:$USUARIO $WEB_DIR/app.wsgi
+
+# =========================================
+# 7. BASE DE DATOS MYSQL
+# =========================================
+
+echo "Creando base de datos..."
+
+sudo mysql <<EOF
+CREATE DATABASE $DB_NAME;
+CREATE USER '$DB_USER'@'localhost' IDENTIFIED BY '$DB_PASS';
+GRANT ALL PRIVILEGES ON $DB_NAME.* TO '$DB_USER'@'localhost';
+FLUSH PRIVILEGES;
+EOF
+
+# =========================================
+# 8. REINICIO SERVICIOS
+# =========================================
+
+echo "Reiniciando servicios..."
+
+sudo systemctl reload apache2
+sudo systemctl restart bind9
+
+# =========================================
+# RESULTADO
+# =========================================
+
+echo ""
+echo "Cliente creado correctamente"
+echo "Web: http://$SUBDOMINIO"
+echo "Python: http://$SUBDOMINIO/app"
+echo "Base de datos: $DB_NAME"
+echo "Usuario DB: $DB_USER"
+echo "Password DB: $DB_PASS"
+echo ""
+```
+
+Una vez guardado el archivo tenemos que darle permisos de ejecución con 
+```bash
+sudo chmod +x crear_cliente.sh
+```
+Y ahora probamos la ejecución del script sin especificar IP con 
+```bash
+sudo ./crear_cliente.sh cliente1
+```
+
+Y como podemos se ha creado correctamente:
+
+![Imagen 3_2](/recursos/tema2/practica_2trimestre/3_2.png)
+
+Si queremos ip solo la añadiríamos así:
+```bash
+sudo ./crear_cliente.sh cliente2 x.x.x.x
+```
