@@ -152,6 +152,11 @@ allow_writeable_chroot=YES
 - chroot_local_user: controla que el usuario solo navegue en su propio directorio personal.
 - ssl_enable: activa el soporte para cifrado TLS/SSL
 
+Por último reinciamos el servicio con 
+```bash
+sudo systemctl restart vsftpd
+```
+
 
 
 
