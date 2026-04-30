@@ -439,7 +439,7 @@ sudo ./crear_cliente.sh cliente2 x.x.x.x
    sudo chmod a+r /etc/apt/keyrings/docker.asc
    ```
 
-![Imagen 5_1](/recursos/tema2/practica_2trimestre/5_1.png)
+![Imagen 5_1_1](/recursos/tema2/practica_2trimestre/5_1_1.png)
 
 4. Agregar el repositorio oficial de Docker
    ```bash
@@ -447,14 +447,14 @@ sudo ./crear_cliente.sh cliente2 x.x.x.x
    tee /etc/apt/sources.list.d/docker.list > /dev/nullsudo apt update
    ```
 
-![Imagen 5_2](/recursos/tema2/practica_2trimestre/5_2.png)
+![Imagen 5_1_2](/recursos/tema2/practica_2trimestre/5_1_2.png)
 
 5. Instalar Docker
    ```bash
    sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
    ```
 
-![Imagen 5_3](/recursos/tema2/practica_2trimestre/5_3.png)
+![Imagen 5_1_3](/recursos/tema2/practica_2trimestre/5_1_3.png)
 
 6. Ejecutar Docker sin sudo
    Por defecto, Docker requiere permisos de superusuario. Para ejecutarlo sin sudo, agregamos nuestro usuario al grupo docker:
@@ -639,12 +639,11 @@ networks:
   red_practica:
 ```
 
-Arrancamos todo con:
+Ahora lanzamos Docker con:
 ```bash
 docker compose up -d
 ```
 
-
-
+![Imagen 5_2_1](/recursos/tema2/practica_2trimestre/5_2_1.png)
 
 
