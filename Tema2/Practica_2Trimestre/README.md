@@ -413,9 +413,74 @@ sudo ./crear_cliente.sh cliente1
 
 Y como podemos se ha creado correctamente:
 
-![Imagen 3_2](/recursos/tema2/practica_2trimestre/3_2.png)
+![Imagen 4_1](/recursos/tema2/practica_2trimestre/4_1.png)
 
 Si queremos ip solo la añadiríamos así:
 ```bash
 sudo ./crear_cliente.sh cliente2 x.x.x.x
 ```
+
+### 5. Creación de entorno completo usando Docker
+Primero tenemos que crear este directorio de carpetas y archivos que usará docker al levantarlo:
+```bash
+docker-practica/
+│
+├── docker-compose.yml
+├── dns/
+│   ├── named.conf.local
+│   ├── db.ejemplo.local
+│   └── db.127
+│
+└── web/
+    ├── index.php
+    └── app.wsgi
+```
+
+Como vamos a montar el mismo entorno de servicios que hicimos en Ubuntu también necesitamos los mismos archivos de dns para zona directa e inversa, y los archivos para python. Podemos usar el mismo contenido que los archivos que configuramos antes cambiando el nombre de los dominios. 
+Para crear los archivos entramos a la carpeta que los contiene y hacemos *sudo nano nombre_archivo* :
+
+- dns/named.conf.local:
+```bash
+zone "ejemplo.local" {
+    type master;
+    file "/etc/bind/db.ejemplo.local";
+};
+
+zone "0.0.127.in-addr.arpa" {
+    type master;
+    file "/etc/bind/db.127";
+};
+```
+- dns/db.ejemplo.local
+```bash
+$TTL 604800
+@   IN  SOA ns.ejemplo.local. admin.ejemplo.local. (
+        2
+        604800
+        86400
+        2419200
+        604800 )
+
+@   IN  NS  ns.ejemplo.local.
+ns  IN  A   127.0.0.1
+
+@   IN  A   127.0.0.1
+web IN  A   127.0.0.1
+```
+- dns/db.127
+```bash
+$TTL 604800
+@   IN  SOA ns.ejemplo.local. admin.ejemplo.local. (
+        2
+        604800
+        86400
+        2419200
+        604800 )
+
+@   IN  NS  ns.ejemplo.local.
+
+1   IN  PTR web.ejemplo.local.
+```
+- 
+
+
