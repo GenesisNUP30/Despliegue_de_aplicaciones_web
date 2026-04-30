@@ -421,6 +421,52 @@ sudo ./crear_cliente.sh cliente2 x.x.x.x
 ```
 
 ### 5. Creación de entorno completo usando Docker
+#### 5.1 Instalación de Docker
+1. Actualizar el sistema
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+2. Instalar dependencias necesarias
+```bash
+sudo apt install -y ca-certificates curl gnupg
+```
+
+3. Agregar la clave GPG de Docker
+```bash
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+```
+
+![Imagen 5_1](/recursos/tema2/practica_2trimestre/5_1.png)
+
+4. Agregar el repositorio oficial de Docker
+```bash
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+```
+
+![Imagen 5_2](/recursos/tema2/practica_2trimestre/5_2.png)
+
+5. Instalar Docker
+```bash
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+![Imagen 5_3](/recursos/tema2/practica_2trimestre/5_3.png)
+
+6. Ejecutar Docker sin sudo
+Por defecto, Docker requiere permisos de superusuario. Para ejecutarlo sin sudo, agregamos nuestro usuario al grupo docker:
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
+
+Y ya tendríamos la instalación finalizada.
+
+#### 5.2 Creación de contenedor de servicios
+
 Primero tenemos que crear este directorio de carpetas y archivos que usará docker al levantarlo:
 ```bash
 docker-practica/
@@ -436,7 +482,9 @@ docker-practica/
     └── app.wsgi
 ```
 
-Como vamos a montar el mismo entorno de servicios que hicimos en Ubuntu también necesitamos los mismos archivos de dns para zona directa e inversa, y los archivos para python. Podemos usar el mismo contenido que los archivos que configuramos antes cambiando el nombre de los dominios. 
+Como vamos a montar el mismo entorno de servicios que hicimos en Ubuntu también necesitamos los mismos archivos de dns para zona directa e inversa, y los archivos para python. 
+Podemos usar el mismo contenido que los archivos que configuramos antes cambiando el nombre de los dominios. 
+
 Para crear los archivos entramos a la carpeta que los contiene y hacemos *sudo nano nombre_archivo* :
 
 - dns/named.conf.local:
@@ -451,7 +499,7 @@ zone "0.0.127.in-addr.arpa" {
     file "/etc/bind/db.127";
 };
 ```
-- dns/db.ejemplo.local
+- dns/db.ejemplo.local: 
 ```bash
 $TTL 604800
 @   IN  SOA ns.ejemplo.local. admin.ejemplo.local. (
@@ -467,6 +515,7 @@ ns  IN  A   127.0.0.1
 @   IN  A   127.0.0.1
 web IN  A   127.0.0.1
 ```
+
 - dns/db.127
 ```bash
 $TTL 604800
@@ -481,6 +530,25 @@ $TTL 604800
 
 1   IN  PTR web.ejemplo.local.
 ```
-- 
+
+- web/index.php:
+```bash
+<?php
+echo "<h1>Servidor Web OK</h1>";
+phpinfo();
+?>
+```
+
+- web/app.wgsi:
+```bash
+def application(environ, start_response):
+    start_response('200 OK', [('Content-Type', 'text/html')])
+    return [b"<h1>Python en Docker funcionando</h1>"]
+```
+
+Con esto ya tendríamos los archivos necesarios para crear el entorno. 
+
+Ahora tenemos que crear el archivo docker-compose.yml donde se definen los diferentes contenedores, red y volúmenes necesarios. 
+
 
 
