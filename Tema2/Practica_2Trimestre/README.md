@@ -423,47 +423,47 @@ sudo ./crear_cliente.sh cliente2 x.x.x.x
 ### 5. Creación de entorno completo usando Docker
 #### 5.1 Instalación de Docker
 1. Actualizar el sistema
-```bash
-sudo apt update && sudo apt upgrade -y
-```
+   ```bash
+   sudo apt update && sudo apt upgrade -y
+   ```
 
 2. Instalar dependencias necesarias
-```bash
-sudo apt install -y ca-certificates curl gnupg
-```
+   ```bash
+   sudo apt install -y ca-certificates curl gnupg
+   ```
 
 3. Agregar la clave GPG de Docker
-```bash
-sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-```
+   ```bash
+   sudo install -m 0755 -d /etc/apt/keyrings
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/keyrings/docker.asc > /dev/null
+   sudo chmod a+r /etc/apt/keyrings/docker.asc
+   ```
 
 ![Imagen 5_1](/recursos/tema2/practica_2trimestre/5_1.png)
 
 4. Agregar el repositorio oficial de Docker
-```bash
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-```
+   ```bash
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo
+   tee /etc/apt/sources.list.d/docker.list > /dev/nullsudo apt update
+   ```
 
 ![Imagen 5_2](/recursos/tema2/practica_2trimestre/5_2.png)
 
 5. Instalar Docker
-```bash
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
+   ```bash
+   sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   ```
 
 ![Imagen 5_3](/recursos/tema2/practica_2trimestre/5_3.png)
 
 6. Ejecutar Docker sin sudo
-Por defecto, Docker requiere permisos de superusuario. Para ejecutarlo sin sudo, agregamos nuestro usuario al grupo docker:
-```bash
-sudo usermod -aG docker $USER
-newgrp docker
-```
+   Por defecto, Docker requiere permisos de superusuario. Para ejecutarlo sin sudo, agregamos nuestro usuario al grupo docker:
+   ```bash
+   sudo usermod -aG docker $USER
+   newgrp docker
+   ```
 
-Y ya tendríamos la instalación finalizada.
+   Y ya tendríamos la instalación finalizada.
 
 #### 5.2 Creación de contenedor de servicios
 
@@ -549,6 +549,102 @@ def application(environ, start_response):
 Con esto ya tendríamos los archivos necesarios para crear el entorno. 
 
 Ahora tenemos que crear el archivo docker-compose.yml donde se definen los diferentes contenedores, red y volúmenes necesarios. 
+Este archivo se crea dentro de la carpeta docker-practica con *sudo nano docker-compose.yml*.
+Su contenido sería este:
+```bash
+version: '3.8'
+
+services:
+
+  # DNS (BIND9)
+  dns:
+    image: ubuntu/bind9
+    container_name: dns
+    restart: always
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./dns:/etc/bind
+    networks:
+      - red_practica
+
+  # WEB (Apache + PHP)
+  web:
+    image: php:8.2-apache
+    container_name: web
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web:/var/www/html
+    depends_on:
+      - mysql
+    networks:
+      - red_practica
+
+  # MYSQL
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: ejemplo_db
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - red_practica
+
+  # PHPMYADMIN
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: rootpass
+    depends_on:
+      - mysql
+    networks:
+      - red_practica
+
+  # SSH (opcional)
+  ssh:
+    image: ubuntu:22.04
+    container_name: ssh
+    restart: always
+    ports:
+      - "2222:22"
+    command: >
+      bash -c "apt update &&
+               apt install -y openssh-server sudo &&
+               mkdir /var/run/sshd &&
+               echo 'root:root' | chpasswd &&
+               sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+               /usr/sbin/sshd -D"
+    networks:
+      - red_practica
+
+# VOLÚMENES
+volumes:
+  mysql_data:
+
+# RED
+networks:
+  red_practica:
+```
+
+Arrancamos todo con:
+```bash
+docker compose up -d
+```
+
+
 
 
 
