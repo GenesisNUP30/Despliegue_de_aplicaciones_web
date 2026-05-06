@@ -47,10 +47,10 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Despliegue de
 
 | Ejercicio | Descripción |
 |-----------|-------------|
-| [Actividad 1](./Tema3/Actividad1) | Instalar Docker en Ubuntu |
-| [Actividad 2](./Tema3/Actividad2) | ... |
-| [Actividad 3](./Tema3/Actividad3) | ... |
-| [Actividad 4](./Tema3/Actividad4) | ... |
-| [Actividad 5](./Tema3/Actividad5) | ... |
-| [Actividad 6](./Tema3/Actividad6) | ... |
+| [Actividad 1](./Tema5/Actividad1) | Instalar Docker en Ubuntu |
+| [Actividad 2](./Tema5/Actividad2) | ... |
+| [Actividad 3](./Tema5/Actividad3) | ... |
+| [Actividad 4](./Tema5/Actividad4) | ... |
+| [Actividad 5](./Tema5/Actividad5) | ... |
+| [Actividad 6](./Tema5/Actividad6) | ... |
 
