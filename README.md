@@ -40,5 +40,4 @@ Este repositorio incluye actividades llevadas a cabo en el módulo Despliegue de
 |-----------|-------------|
 | [Ejercicio 1](./Tema2/Ejercicio1) | Ejercicio 1 |
 | [Práctica 2º Trimestre](./Tema2/Practica_2Trimestre) | Instalación, configuración y puesta en marcha de un servidor que ofrezca servicio de alojamiento web configurable |
-| [Ejercicio 2](./Tema2/Ejercicio2) |  |
-| ...       | ...         |
+|       |          |
