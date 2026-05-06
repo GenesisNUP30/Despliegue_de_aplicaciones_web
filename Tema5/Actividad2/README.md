@@ -1,1 +1,1 @@
-# Actividad 2. 
+# Actividad 2. Introducción a los contenedores Docker
