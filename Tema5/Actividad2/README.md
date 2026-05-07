@@ -55,7 +55,6 @@ docker ps -a
 
 ![Imagen 2_2](/recursos/tema5/actividad2/2_2.png)
 
-
 Para visualizar las imágenes que ya tenemos descargadas en nuestro registro local:
 
 ```bash
@@ -66,7 +65,49 @@ docker images
 
 
 ## Contenedor 3 - Ejecutando un contenedor interactivo
+En este caso vamos a usar diferentes opciones:
+- **-i**: para abrir una sesión interactiva
+- **-t**: crear un pseudo-terminal que nos va a permitir interaccionar con el contenedor
+- **--name**: indicar un nombre del contenedor con la opción --name
+- ***nombre_imagen**: la imagen que vamos a utilizar para crearlo que en este caso es ubuntu
+- **nombre_comando**: el comando que vamos a ejecutar, en este caso bash, que lanzará una sesión bash en el contenedor:
 
+```bash
+docker run -it --name contenedor1 ubuntu bash
+```
+
+![Imagen 3_1](/recursos/tema5/actividad2/3_1.png)
+
+Para salirnos o desconectarnos de él hacemos **exit**
+
+El contenedor se para cuando salimos de él. Para volver a conectarnos a él:
+```bash
+docker start contenedor1
+docker attach contenedor1
+```
+
+![Imagen 3_2](/recursos/tema5/actividad2/3_2.png)
+
+Si el contenedor se está ejecutando podemos ejecutar comandos en él con el subcomando **exec**:
+```bash
+docker exec contenedor1 ls -al
+```
+
+![Imagen 3_3](/recursos/tema5/actividad2/3_3.png)
+
+Para mostrar información del contenedor ejecutamos:
+
+```bash
+docker inspect contenedor1
+```
+
+![Imagen 3_4](/recursos/tema5/actividad2/3_4.png)
+
+La información está en JSON y entre otras cosas se muestra:
+- El id del contenedor.
+- Los puertos abiertos y sus redirecciones
+- Los bind mounts y volúmenes usados.
+- El tamaño del contenedor
 
 
 ## Contenedor 4 - Creando un contenedor demonio
