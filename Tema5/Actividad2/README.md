@@ -89,6 +89,7 @@ docker attach contenedor1
 ![Imagen 3_2](/recursos/tema5/actividad2/3_2.png)
 
 Si el contenedor se está ejecutando podemos ejecutar comandos en él con el subcomando **exec**:
+
 ```bash
 docker exec contenedor1 ls -al
 ```
@@ -111,6 +112,41 @@ La información está en JSON y entre otras cosas se muestra:
 
 
 ## Contenedor 4 - Creando un contenedor demonio
+Para hacerlo usamos la opción -d del comando run, para que la ejecución del comando en el contenedor se haga en segundo plano.
+
+```bash
+docker run -d --name contenedor2 ubuntu bash -c "while true; do echo hello world; sleep 1; done"
+```
+
+![Imagen 4_1](/recursos/tema5/actividad2/4_1.png)
+
+El comando bash -c le dice al contenedor que inicie una terminal Bash y ejecute el comando que está entre comillas. En este caso, lo que se ejecuta es un bucle infinito donde se escribe en pantalla el texto hello world y luego esperar 1 segundo, para volver a empezar una y otra vez. 
+
+Vamos a comprobar que el contenedor se está ejecutando:
+
+```bash
+docker ps
+```
+
+![Imagen 4_2](/recursos/tema5/actividad2/4_2.png)
+
+Y ahora vemos lo que está haciendo el contedor:
+
+```bash
+docker logs contenedor2
+```
+
+![Imagen 4_3](/recursos/tema5/actividad2/4_3.png)
+
+Como vemos se está ejecutando el bucle correctamente. 
+
+Para parar el contenedor hacemos
+
+```bash
+docker stop contenedor2
+```
+
+![Imagen 4_4](/recursos/tema5/actividad2/4_4.png)
 
 
 
